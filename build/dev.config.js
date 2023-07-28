@@ -16,13 +16,21 @@ limitations under the License.
 const dotenv = require('dotenv-webpack');
 const {merge} = require('webpack-merge');
 const baseConfig = require('./base.config.js');
+const path = require("path");
 
 module.exports = merge(baseConfig, {
-  mode: 'development',
-  devtool: 'source-map',
+  mode: "development",
+  devtool: "source-map",
   plugins: [
     new dotenv({
-      path: './build/dev.env'
+      path: "./build/dev.env",
     }),
   ],
-})
+  devServer: {
+    static: {
+      directory: path.resolve(__dirname, "dist"), // Specify the directory to serve static files from
+    },
+    port: 3000, // Specify the port number
+    hot: true, // Enable hot module replacement
+  },
+});
