@@ -19,7 +19,8 @@ const CopyWebpackPlugin = require('copy-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const AsyncCssPlugin = require("async-css-plugin");
 const {GenerateSW} = require('workbox-webpack-plugin');
-const VueLoaderPlugin = require('vue-loader/lib/plugin')
+const VueLoaderPlugin = require('vue-loader/lib/plugin');
+const { env } = require('process');
 
 module.exports = {
   devtool: 'source-map',
@@ -134,18 +135,18 @@ module.exports = {
       { from: './static/manifest.json', to: '.' },
       { from: './static/images/favicon.ico', to: '.' }
     ]}),
-    new GenerateSW({
-      exclude: [
-        /\.map$/, /\.png$/, /\.jpg$/, /\.mp3$/, /\.xml$/, /\.ico$/,
-        /faq/, /privacy/, /translate/, /404/, /vendors~/, /^locale/,
-        /admin/, /index/, /classroom/, /tutorials/, /polyfill/, /precache/,
-        /vendor/, /view/, /e628cc/, /shared/, /carousel/, /notFound/, /export/,
-        /firebase/, /howler/, /translations/, /vibrant/, /workbox/
-      ],
-      skipWaiting: true,
-      clientsClaim: true,
-      cleanupOutdatedCaches: true
-    }),
+    // new GenerateSW({
+    //   exclude: [
+    //     /\.map$/, /\.png$/, /\.jpg$/, /\.mp3$/, /\.xml$/, /\.ico$/,
+    //     /faq/, /privacy/, /translate/, /404/, /vendors~/, /^locale/,
+    //     /admin/, /index/, /classroom/, /tutorials/, /polyfill/, /precache/,
+    //     /vendor/, /view/, /e628cc/, /shared/, /carousel/, /notFound/, /export/,
+    //     /firebase/, /howler/, /translations/, /vibrant/, /workbox/
+    //   ],
+    //   skipWaiting: true,
+    //   clientsClaim: true,
+    //   cleanupOutdatedCaches: true
+    // }),
     new VueLoaderPlugin(),
   ],
 }
