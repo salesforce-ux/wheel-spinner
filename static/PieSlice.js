@@ -28,7 +28,8 @@ export default class PieSlice {
     this.image = image;
     const colors = this.wheelConfig.getCoalescedColors();
     this.color = colors[index % colors.length];
-    this.index = (1 + index) * 10;
+    this.entry = entry;
+    this.colorTint = entry.colorTint;
     this.wheelImages = {};
   }
 
@@ -58,8 +59,9 @@ export default class PieSlice {
   drawImageWheelSlice(context) {
     drawImage(context, this.radians/2, this.wheelRadius, this.hubRadius, this.image);
     const textColor = {fill: 'white', outline: 'black'};
-    drawText(context, this.wheelRadius, this.displayText, textColor);
-    drawIndexText(context, this.wheelRadius, this.index, textColor);
+    // drawText(context, this.wheelRadius, this.displayText, textColor);
+    drawIndexText(context, this.wheelRadius, this.colorTint, textColor);
+    drawColorNameText(context, this.wheelRadius, this.entry, textColor);
     drawBorder(context, this.wheelConfig.drawOutlines, this.wheelRadius, this.radians);
   }
 
@@ -73,8 +75,9 @@ export default class PieSlice {
       drawBackColor(context, this.wheelRadius, this.radians, this.color);
       textColor = {fill: getTextColor(this.color), outline: ''};
     }
-    drawText(context, this.wheelRadius, this.displayText, textColor);
-    drawIndexText(context, this.wheelRadius, this.index, textColor);
+    // drawText(context, this.wheelRadius, this.displayText, textColor);
+    drawIndexText(context, this.wheelRadius, this.colorTint, textColor);
+    drawColorNameText(context, this.wheelRadius, this.entry, textColor);
     drawBorder(context, this.wheelConfig.drawOutlines, this.wheelRadius, this.radians);
   }
 
@@ -87,8 +90,9 @@ export default class PieSlice {
     }
     drawImage(context, this.radians/2, this.wheelRadius, this.hubRadius, this.image);
     const textColor = {fill: 'white', outline: 'black'};
-    drawText(context, this.wheelRadius, this.displayText, textColor);
-    drawIndexText(context, this.wheelRadius, this.index, textColor);
+    // drawText(context, this.wheelRadius, this.displayText, textColor);
+    drawIndexText(context, this.wheelRadius, this.colorTint, textColor);
+    drawColorNameText(context, this.wheelRadius, this.entry, textColor);
     drawBorder(context, this.wheelConfig.drawOutlines, this.wheelRadius, this.radians);
   }
 
@@ -102,8 +106,9 @@ export default class PieSlice {
     }
     drawImage(context, this.radians/2, this.wheelRadius, this.hubRadius, this.image);
     const textColor = {fill: 'white', outline: 'black'};
-    drawText(context, this.wheelRadius, this.displayText, textColor);
-    drawIndexText(context, this.wheelRadius, this.index, textColor);
+    // drawText(context, this.wheelRadius, this.displayText, textColor);
+    drawIndexText(context, this.wheelRadius, this.colorTint, textColor);
+    drawColorNameText(context, this.wheelRadius, this.entry, textColor);
     drawBorder(context, this.wheelConfig.drawOutlines, this.wheelRadius, this.radians);
   }
 
@@ -135,7 +140,6 @@ function drawTriangleBackColor(context, radius, radians, color) {
 }
 
 function drawText(context, radius, displayText, textColor) {
-  console.log(displayText, radius, context);
   context.lineJoin = 'round';
   context.textBaseline = 'middle';
   context.textAlign = 'end';
@@ -149,33 +153,60 @@ function drawText(context, radius, displayText, textColor) {
 }
 
 function drawIndexText(context, radius, displayText, textColor) {
+  context.save();
   const myRadius = 0;
-  console.log(displayText, radius, context);
   context.lineJoin = 'round';
   context.textBaseline = 'middle';
   context.textAlign = 'center';
-  if (textColor.outline) {
-    context.lineWidth = 4;
-    context.strokeStyle = textColor.outline;
-    context.strokeText(` ${displayText} `, myRadius, 0);
-  }
   context.fillStyle = textColor.fill;
-  context.font = "bold 72px arial";
+  context.font = "bold 72px Inter";
   const textWidth = context.measureText(` ${displayText} `).width;
   const textHeight = context.measureText("M").width; // Approximation of text height
   context.translate(radius - textHeight, 0);
   context.rotate(Math.PI/2);
   context.fillText(` ${displayText} `, 0 , 0);
 
-  context.strokeStyle = "black";
-  context.lineWidth = 1;
-  context.strokeRect(
-    myRadius - textWidth / 2,
-    -textHeight / 2,
-    textWidth,
-    textHeight
-  );
+  // context.strokeStyle = "black";
+  // context.lineWidth = 1;
+  // context.strokeRect(
+  //   myRadius - textWidth / 2,
+  //   -textHeight / 2,
+  //   textWidth,
+  //   textHeight
+  //   );
+  context.restore();
+}
 
+function drawColorNameText(context, radius, entry, textColor) {
+  context.save();
+  const colorName = entry.colorName;
+  const colorMood = entry.text;
+  const myRadius = 0;
+  context.lineJoin = 'round';
+  context.textBaseline = 'middle';
+  context.textAlign = 'center';
+  context.fillStyle = textColor.fill;
+  context.font = "24px Inter";
+  const textWidth = context.measureText(` ${colorName} `).width;
+  const textHeight = context.measureText("M").width; // Approximation of text height
+  context.translate(radius - textHeight*5, 0);
+  context.rotate(Math.PI/2);
+
+  const lineHeight = 24;
+  // Split the text into an array of lines
+  const lines = colorName.split(' ');
+
+  // Draw each line of text
+  lines.forEach((line, index) => {
+    context.fillText(line, 0, index * lineHeight);
+  });
+
+  context.font = "bold 24px Inter";
+  context.fillText(colorMood, 0, lines.length * lineHeight);
+
+  // context.fillText(` ${colorName} `, 0 , 0);
+
+  context.restore();
 }
 
 function drawBorder(context, drawOutlines, radius, radians) {
