@@ -21,22 +21,32 @@ export default class WheelConfig {
     this.title = '';
     this.description = '';
     this.entries = [
-      {text: 'Ali'},
-      {text: 'Beatriz'},
-      {text: 'Charles'},
-      {text: 'Diya'},
-      {text: 'Eric'},
-      {text: 'Fatima'},
-      {text: 'Gabriel'},
-      {text: 'Hanna'},
+      { text: "Casual", colorName: "Blue", colorTint: "20" },
+      { text: "Friendly", colorName: "Blue", colorTint: "40" },
+      { text: "Serious", colorName: "Blue", colorTint: "50" },
+      { text: "Casual", colorName: "Cloud Blue", colorTint: "60" },
+      { text: "Friendly", colorName: "Orange", colorTint: "70" },
+      { text: "Serious", colorName: "Teal", colorTint: "50" },
+      { text: "Casual", colorName: "Indigo", colorTint: "40" },
+      { text: "Friendly", colorName: "Neutral", colorTint: "10" },
+      { text: "Serious", colorName: "Neutral", colorTint: "30" },
+      { text: "Casual", colorName: "Neutral", colorTint: "80" },
+      { text: "Friendly", colorName: "Neutral", colorTint: "95" },
+      { text: "Serious", colorName: "Neutral", colorTint: "100" },
     ];
     this.colorSettings = [
-      {color: '#3369E8', enabled: true},
-      {color: '#D50F25', enabled: true},
-      {color: '#EEB211', enabled: true},
-      {color: '#009925', enabled: true},
-      {color: '#000000', enabled: false},
-      {color: '#000000', enabled: false},
+      {color: '#032D60', enabled: true},
+      {color: '#0B5CAB', enabled: true},
+      {color: '#0176D3', enabled: true},
+      {color: '#0D9DDA', enabled: true},
+      {color: '#FE9339', enabled: true},
+      {color: '#0B827C', enabled: true},
+      {color: '#3A49DA', enabled: true},
+      {color: '#181818', enabled: true},
+      {color: '#444444', enabled: true},
+      {color: '#C9C9C9', enabled: true},
+      {color: '#F3F3F3', enabled: true},
+      {color: '#FFFFFF', enabled: true},
     ];
     this.pageBackgroundColor = '#FFFFFF';
     this.type = 'color';
@@ -119,7 +129,7 @@ export default class WheelConfig {
     this.customCoverImageDataUri = dataUri;
     this.coverImageType = 'uploaded';
   }
-  
+
   getWheelImage() {
     if (this.pictureType == 'none') {
       return '/images/none.png';
