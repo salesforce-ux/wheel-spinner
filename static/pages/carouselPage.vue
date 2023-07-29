@@ -37,7 +37,7 @@ limitations under the License.
         </b-navbar-item>
       </template>
     </b-navbar>
-    <section class="section" style="padding-top:1rem; padding-bottom:0; font-family:Quicksand">
+    <section class="section" style="padding-top:1rem; padding-bottom:0; font-family:Inter">
       <div class="columns" :key="forceRefreshVariable">
         <div class="column is-3" v-for="(carousel, i) in carousels" :key="i">
           <div class="card can-go-dark" style="margin-top:10px; margin-bottom:10px">

@@ -23,7 +23,7 @@ export function getFont(context, texts, wheelRadius, hubRadius, smallestAngle) {
     return cachedResult;
   }
   let minFontSize = 200;
-  let fontName = 'Quicksand, sans-serif';
+  let fontName = 'Inter, sans-serif';
   texts.forEach(text => {
     let fontSize = getFontSize(
       context, text, fontName, wheelRadius, hubRadius, smallestAngle

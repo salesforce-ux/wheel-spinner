@@ -56,7 +56,7 @@ limitations under the License.
     <div v-if="wheelIsShared">
       <section class="section" style="padding-top:1rem; padding-left:1rem">
         <div class="columns">
-          <div class="column is-3" style="font-family:Quicksand">
+          <div class="column is-3" style="font-family:Inter">
             <h3 v-if="wheelTitle" class="subtitle is-3">{{ wheelTitle }}</h3>
             <p v-if="wheelDescription">{{ wheelDescription }}</p><br/>
             <b-button v-if="!wheelIsCopyable" :disabled="wheelIsBusy" @click="createYourOwn">
@@ -167,7 +167,7 @@ limitations under the License.
   import * as Locales from '../Locales.js';
   import * as i18nSetup from '../i18n-setup.js';
   import { mapGetters } from "vuex";
-  
+
   export default {
     components: {
       toolbar, spinningwheel, nameTabs, opendialog,
@@ -235,7 +235,7 @@ limitations under the License.
         const self = this;
         document.addEventListener('fullscreenchange', event => {
           self.$store.commit('fullScreenChanged');
-        })      
+        })
       },
       startOnlineDetection() {
         const self = this;

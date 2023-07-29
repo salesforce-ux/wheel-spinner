@@ -46,7 +46,7 @@ limitations under the License.
         </b-navbar-item>
       </template>
     </b-navbar>
-    <section class="section" style="padding-top:1rem; padding-bottom:0; font-family:Quicksand; height:100%">
+    <section class="section" style="padding-top:1rem; padding-bottom:0; font-family:Inter; height:100%">
       <div class="columns" style="height:100%">
         <div class="column is-6">
           <spinningwheel ref="spinningwheel"
