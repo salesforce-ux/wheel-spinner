@@ -17,7 +17,7 @@ limitations under the License.
   <div style="height: 100%">
 
     <div v-if="!wheelIsShared" :style="$mq=='desktop'?'height: 100%':''">
-      <toolbar
+      <toolbar default-cruft
         v-on:show-snackbar-message="showSnackbarMessage"
         v-on:reset-wheel="resetWheel()"
         v-on:open-open-dialog="openOpenDialog()"
