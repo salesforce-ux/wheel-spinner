@@ -1,5 +1,10 @@
-// hide default cruft like nav, tabs, etc.
+body {
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
 
+// hide default cruft like nav, tabs, etc.
 .default-cruft,
 [default-cruft],
 .b-tabs {

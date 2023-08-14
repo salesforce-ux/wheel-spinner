@@ -14,7 +14,7 @@ See the License for the specific language governing permissions and
 limitations under the License.
 -->
 <template>
-  <b-modal :active.sync="winnerDialogVisible" :width="640" scroll="keep">
+  <b-modal :active.sync="winnerDialogVisible" full-screen scroll="keep">
     <div class="modal-card" style="width: auto">
       <header class="modal-card-head">
         <div class="modal-card-title" style="width:100%">
@@ -43,17 +43,17 @@ limitations under the License.
               {{ $t('common.Close') }}
             </b-button>
           </p>
-          <p class="control" v-show="showRemoveButton">
+          <p class="control default-cruft" v-show="showRemoveButton">
             <b-button size="is-medium" type="is-info" ref="removeButton" @click="removeWinner">
               {{ $t('winnerdialog.Remove') }}
             </b-button>
           </p>
-          <p class="control" v-show="showRemoveAllButton">
+          <p class="control default-cruft" v-show="showRemoveAllButton">
             <b-button size="is-medium" type="is-primary" @click="removeWinnerAll">
               {{ $t('winnerdialog.Remove all instances') }}
             </b-button>
           </p>
-          <p class="control" v-show="showHideButton">
+          <p class="control default-cruft" v-show="showHideButton">
             <b-button size="is-medium" type="is-primary" @click="hideWinner">
               {{ $t('winnerdialog.Hide') }}
             </b-button>
