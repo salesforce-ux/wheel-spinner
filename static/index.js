@@ -32,6 +32,7 @@ import './images/favicon-32x32.png';
 import './images/favicon.ico';
 import './images/link.png';
 import './images/user_profile.png';
+import "./images/org-mock-82-100-100.jpg";
 
 Util.initTracking();
 if ('serviceWorker' in navigator) {
