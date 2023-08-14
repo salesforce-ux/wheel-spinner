@@ -22,6 +22,7 @@ import * as i18nSetup from './i18n-setup.js';
 import * as Util from './Util.js';
 
 import 'buefy/dist/buefy.css';
+import './styles/df23.scss';
 
 import './images/icon_192.png';
 import './images/icon_512.png';
