@@ -23,17 +23,17 @@ const VueLoaderPlugin = require('vue-loader/lib/plugin');
 const { env } = require('process');
 
 module.exports = {
-  devtool: 'source-map',
-  target: ['web', 'es5'],
+  devtool: "source-map",
+  target: ["web", "es5"],
   entry: {
-    polyfill: '@babel/polyfill',
-    index: './static/index.js',
-    shared_wheel: './static/index.js',
+    polyfill: "@babel/polyfill",
+    index: "./static/index.js",
+    shared_wheel: "./static/index.js",
   },
   output: {
-    filename: '[name]-[contenthash].js',
-    path: path.resolve(__dirname, '../dist'),
-    publicPath: '/'
+    filename: "[name]-[contenthash].js",
+    path: path.resolve(__dirname, "../dist"),
+    publicPath: "/",
   },
   optimization: {
     splitChunks: {
@@ -48,12 +48,12 @@ module.exports = {
   },
   performance: {
     maxEntrypointSize: 1500000,
-    maxAssetSize: 1500000
+    maxAssetSize: 1500000,
   },
   resolve: {
     alias: {
-      'vue$': 'vue/dist/vue.esm.js'
-    }
+      vue$: "vue/dist/vue.esm.js",
+    },
   },
   module: {
     rules: [
@@ -61,80 +61,85 @@ module.exports = {
         test: /\.m?js$/,
         exclude: /(node_modules|bower_components)/,
         use: {
-          loader: 'babel-loader',
+          loader: "babel-loader",
           options: {
-            presets: ['@babel/preset-env']
-          }
-        }
+            presets: ["@babel/preset-env"],
+          },
+        },
+      },
+      {
+        test: /\.(scss)$/,
+        use: ["style-loader", "css-loader", "sass-loader"],
       },
       {
         test: /\.css$/,
-        use: [
-          MiniCssExtractPlugin.loader,
-          "css-loader"
-        ]
+        use: [MiniCssExtractPlugin.loader, "css-loader"],
       },
       {
         test: /\.(woff|woff2|ttf|eot|svg)$/,
-        use: [{
-            loader: 'file-loader',
+        use: [
+          {
+            loader: "file-loader",
             options: {
-                name: '[name].[ext]',
-                outputPath: '/font',
-                publicPath: '/font/',
-            }
-        }]
+              name: "[name].[ext]",
+              outputPath: "/font",
+              publicPath: "/font/",
+            },
+          },
+        ],
       },
       {
         test: /\.(png|jpg|jpeg|gif|ico)$/,
         use: [
           {
-            loader: 'file-loader',
+            loader: "file-loader",
             options: {
-              name: '[name].[ext]',
-              outputPath: '/images/'
-            }
-          }
-        ]
+              name: "[name].[ext]",
+              outputPath: "/images/",
+            },
+          },
+        ],
       },
       {
-      test: /\.(mp3)$/,
+        test: /\.(mp3)$/,
         use: [
           {
-            loader: 'file-loader',
+            loader: "file-loader",
             options: {
-              name: '[name].[ext]',
-              outputPath: '/'
-          }
-        }
-        ]
+              name: "[name].[ext]",
+              outputPath: "/",
+            },
+          },
+        ],
       },
       {
         test: /\.vue$/,
-        loader: 'vue-loader'
-      }
-    ]
+        loader: "vue-loader",
+      },
+    ],
   },
   plugins: [
     new MiniCssExtractPlugin({
       filename: "css/[name].css",
     }),
     new HtmlWebpackPlugin({
-      template: './static/index.html',
-      filename: './index.html',
-      chunks: ['index', 'vendor']
+      template: "./static/index.html",
+      filename: "./index.html",
+      chunks: ["index", "vendor"],
     }),
     new AsyncCssPlugin(),
     new HtmlWebpackPlugin({
-      template: './static/shared_wheel.html',
-      filename: './shared-wheel.html',
-      chunks: ['index', 'vendor']
+      template: "./static/shared_wheel.html",
+      filename: "./shared-wheel.html",
+      chunks: ["index", "vendor"],
     }),
-    new CopyWebpackPlugin({patterns: [
-      { from: './static/third_party', to: 'third_party' },
-      { from: './static/manifest.json', to: '.' },
-      { from: './static/images/favicon.ico', to: '.' }
-    ]}),
+    new CopyWebpackPlugin({
+      patterns: [
+        { from: "./static/third_party", to: "third_party" },
+        { from: "./static/manifest.json", to: "." },
+        { from: "./static/images/favicon.ico", to: "." },
+      ],
+    }),
     // new GenerateSW({
     //   exclude: [
     //     /\.map$/, /\.png$/, /\.jpg$/, /\.mp3$/, /\.xml$/, /\.ico$/,
@@ -149,4 +154,4 @@ module.exports = {
     // }),
     new VueLoaderPlugin(),
   ],
-}
+};
