@@ -14,8 +14,8 @@ See the License for the specific language governing permissions and
 limitations under the License.
 -->
 <template>
-  <div class="container" style="text-align: center">
-    <canvas id="wheelCanvas" style="width:100%" @click="spin()" width="700" height="700">
+  <div class="spinningwheel-container container" style="text-align: center">
+    <canvas id="wheelCanvas" style="width:100%" @click="spin()" width="888" height="888">
     </canvas>
     <wheelOverlayText
       v-if="displayOverlayText"
