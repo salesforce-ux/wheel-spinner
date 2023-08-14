@@ -14,13 +14,15 @@ See the License for the specific language governing permissions and
 limitations under the License.
 -->
 <template>
-  <div class="spinningwheel-container container" style="text-align: center">
-    <canvas id="wheelCanvas" style="width:100%" @click="spin()" width="888" height="888">
-    </canvas>
-    <wheelOverlayText
-      v-if="displayOverlayText"
-      v-on:click="spin()"
-    />
+  <div class="wrapper" :style="cssVars">
+    <div class="spinningwheel-container container">
+      <canvas id="wheelCanvas" style="width:100%" @click="spin()" :width="wheelSize" :height="wheelSize">
+      </canvas>
+      <wheelOverlayText
+        v-if="displayOverlayText"
+        v-on:click="spin()"
+      />
+    </div>
   </div>
 </template>
 
@@ -35,7 +37,7 @@ limitations under the License.
     components: { wheelOverlayText },
     data() {
       return {
-        myWheel: {}, myTicker: new Ticker(), displayOverlayText: true, animationFrameID: undefined
+        myWheel: {}, myTicker: new Ticker(), displayOverlayText: true, animationFrameID: undefined, wheelSize: 888
       }
     },
     mounted() {
@@ -51,6 +53,12 @@ limitations under the License.
       this.animationFrameID = undefined;
     },
     computed: {
+      cssVars() {
+        return {
+          /* variables you want to pass to css */
+          '--wheel-size': `${this.wheelSize}px`,
+        }
+      },
       entries() {
         return this.wheelConfig.entries;
       },
@@ -60,7 +68,8 @@ limitations under the License.
       locale() {
         return this.$i18n.locale;
       },
-      ...mapGetters(['wheelConfig', 'darkMode', 'version', 'wheelIsBusy'])
+      ...mapGetters(['wheelConfig', 'darkMode', 'version', 'wheelIsBusy']),
+
     },
     watch: {
       wheelConfig(newValue, oldValue) {
@@ -140,7 +149,20 @@ limitations under the License.
 </script>
 
 <style scoped>
-  .container {
+  .wrapper {
+    border: 1px solid #afa;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
     position: relative;
+    bottom: calc(var(--wheel-size) * -0.5);
+  }
+  .container {
+    border: 1px solid #faa;
+    position: relative;
+    /* transform: translate(0, 22%); */
+    /* bottom: -25%;
+    left: auto;
+    right: auto; */
   }
 </style>
