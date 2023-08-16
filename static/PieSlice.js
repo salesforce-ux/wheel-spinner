@@ -68,11 +68,11 @@ export default class PieSlice {
   drawColorWheelWithNoImage(context) {
     let textColor;
     if (this.customBackgoundColor) {
-      drawBackColor(context, this.wheelRadius, this.radians, this.customBackgoundColor);
+      drawBackColorNew(context, this.wheelRadius, this.radians, this.customBackgoundColor);
       textColor = {fill: getTextColor(this.customBackgoundColor), outline: ''};
     }
     else {
-      drawBackColor(context, this.wheelRadius, this.radians, this.color);
+      drawBackColorNew(context, this.wheelRadius, this.radians, this.color);
       textColor = {fill: getTextColor(this.color), outline: ''};
     }
     // drawText(context, this.wheelRadius, this.displayText, textColor);
@@ -83,10 +83,10 @@ export default class PieSlice {
 
   drawColorWheelWithTransparentImage(context) {
     if (this.customBackgoundColor) {
-      drawBackColor(context, this.wheelRadius, this.radians, this.customBackgoundColor);
+      drawBackColorNew(context, this.wheelRadius, this.radians, this.customBackgoundColor);
     }
     else {
-      drawBackColor(context, this.wheelRadius, this.radians, this.color);
+      drawBackColorNew(context, this.wheelRadius, this.radians, this.color);
     }
     drawImage(context, this.radians/2, this.wheelRadius, this.hubRadius, this.image);
     const textColor = {fill: 'white', outline: 'black'};
@@ -98,11 +98,11 @@ export default class PieSlice {
 
   drawColorWheelWithRegularImage(context) {
     if (this.customBackgoundColor) {
-      drawBackColor(context, this.wheelRadius, this.radians, this.customBackgoundColor);
+      drawBackColorNew(context, this.wheelRadius, this.radians, this.customBackgoundColor);
     }
     else {
       const imgBgColor = ImageUtil.getTopLeftColor(this.image);
-      drawBackColor(context, this.wheelRadius, this.radians, imgBgColor);
+      drawBackColorNew(context, this.wheelRadius, this.radians, imgBgColor);
     }
     drawImage(context, this.radians/2, this.wheelRadius, this.hubRadius, this.image);
     const textColor = {fill: 'white', outline: 'black'};
@@ -115,12 +115,52 @@ export default class PieSlice {
 }
 
 function drawBackColor(context, radius, radians, color) {
+  console.log(radius, radians, color);
   context.beginPath();
   context.moveTo(0, 0);
   context.arc(0, 0, radius, -radians/2, radians/2);
   context.lineTo(0, 0);
   context.fillStyle = color;
   context.fill();
+}
+
+function drawBackColorNew(context, radius, radians, color) {
+  const startX = 0;
+  const startY = 0;
+  const new_radius = radius + 12;
+  const new_color = "#777";
+
+  context.beginPath();
+  context.moveTo(startX, startY);
+  context.arc(startX, startY, new_radius, -radians / 2, radians / 2);
+  context.lineTo(startX, startY);
+  context.fillStyle = new_color;
+  context.fill();
+
+  // Draw the new shape
+  context.beginPath();
+  context.moveTo(startX, startY);
+  context.arc(startX, startY, radius, -radians / 2, radians / 2);
+  context.lineTo(startX, startY);
+  context.fillStyle = color;
+  context.fill();
+
+  // Draw the pegs
+  const pegRadius = 4;
+  const numPegs = 3;
+  const arcStart = -radians / numPegs;
+
+  for (let i = 0; i < numPegs; i++) {
+    var x =
+      startX + Math.cos(arcStart + radians * (i / numPegs)) * (radius + 6);
+    var y =
+      startY + Math.sin(arcStart + radians * (i / numPegs)) * (radius + 6);
+    console.log(i, "x:", x, "y:", y);
+    context.beginPath();
+    context.arc(x, y, pegRadius, 0, 2 * Math.PI);
+    context.fillStyle = "#fff";
+    context.fill();
+  }
 }
 
 function drawTriangleBackColor(context, radius, radians, color) {
