@@ -21,6 +21,7 @@ import router from './router.js';
 import * as i18nSetup from './i18n-setup.js';
 import * as Util from './Util.js';
 
+import "@salesforce-ux/wes-foundation/dist/index.css";
 import 'buefy/dist/buefy.css';
 import './styles/df23.scss';
 

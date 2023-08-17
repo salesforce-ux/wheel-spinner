@@ -5,6 +5,7 @@
   "private": true,
   "dependencies": {
     "@babel/polyfill": "^7.11.5",
+    "@salesforce-ux/wes-foundation": "^0.1.0",
     "buefy": "^0.8.20",
     "canvas-confetti": "^1.2.0",
     "circletype": "^2.3.0",

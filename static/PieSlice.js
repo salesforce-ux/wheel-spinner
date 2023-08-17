@@ -199,7 +199,7 @@ function drawIndexText(context, radius, displayText, textColor) {
   context.textBaseline = 'middle';
   context.textAlign = 'center';
   context.fillStyle = textColor.fill;
-  context.font = "bold 72px Inter";
+  context.font = "bold 72px ITC Avant Garde";
   const textWidth = context.measureText(` ${displayText} `).width;
   const textHeight = context.measureText("M").width; // Approximation of text height
   context.translate(radius - textHeight, 0);
@@ -226,7 +226,7 @@ function drawColorNameText(context, radius, entry, textColor) {
   context.textBaseline = 'middle';
   context.textAlign = 'center';
   context.fillStyle = textColor.fill;
-  context.font = "24px Inter";
+  context.font = "24px ITC Avant Garde";
   const textWidth = context.measureText(` ${colorName} `).width;
   const textHeight = context.measureText("M").width; // Approximation of text height
   context.translate(radius - textHeight*5, 0);
@@ -241,7 +241,7 @@ function drawColorNameText(context, radius, entry, textColor) {
     context.fillText(line, 0, index * lineHeight);
   });
 
-  context.font = "bold 24px Inter";
+  context.font = "bold 24px ITC Avant Garde";
   context.fillText(colorMood, 0, lines.length * lineHeight);
 
   // context.fillText(` ${colorName} `, 0 , 0);
