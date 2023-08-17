@@ -15,6 +15,7 @@ limitations under the License.
 */
 import * as Util from './Util.js';
 import * as ImageUtil from './ImageUtil.js';
+import tinycolor from 'tinycolor2';
 
 export default class PieSlice {
 
@@ -138,12 +139,25 @@ function drawBackColorNew(context, radius, radians, color) {
   context.fill();
 
   // Draw the new shape
+  const gradient = context.createLinearGradient(startX, startY, radius, startY);
+  gradient.addColorStop(0, color);
+  gradient.addColorStop(0.5, tinycolor(color).lighten(30).toString());
+  gradient.addColorStop(1, color);
   context.beginPath();
   context.moveTo(startX, startY);
   context.arc(startX, startY, radius, -radians / 2, radians / 2);
   context.lineTo(startX, startY);
-  context.fillStyle = color;
+  context.fillStyle = gradient;
   context.fill();
+
+  // Draw the stroke
+  context.beginPath();
+  context.moveTo(startX, startY);
+  context.arc(startX, startY, new_radius, -radians / 2, radians / 2);
+  context.lineTo(startX, startY);
+  context.strokeStyle = "#000";
+  context.lineWidth = "5";
+  context.stroke();
 
   // Draw the pegs
   const pegRadius = 4;

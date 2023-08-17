@@ -181,6 +181,9 @@ export default class WheelPainter {
     context.beginPath();
     context.arc(0, 0, this.hubRadius, 0, Math.PI * 2);
     context.fill();
+    context.strokeStyle = "#000";
+    context.lineWidth = "5";
+    context.stroke();
     if (this.wheelConfig.drawOutlines) {
       context.lineWidth = 2;
       context.strokeStyle = '#333333';

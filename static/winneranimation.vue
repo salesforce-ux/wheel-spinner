@@ -82,7 +82,7 @@ limitations under the License.
   .animated-text {
     color: #FFFFFF;
     font-size: 200px;
-    font-family: Inter;
+    font-family: ITC Avant Garde;
     animation-name: zoom-animation;
     animation-duration: 6s;
     animation-timing-function: ease-in;

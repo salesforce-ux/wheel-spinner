@@ -136,7 +136,7 @@ export function topLeftIsFullyTransparent(image) {
 
 function setLargestFittingFont(context, text, maxWidth) {
   for (let fontSize=Math.round(maxWidth/2); fontSize>=maxWidth/20; fontSize--) {
-    context.font = `${fontSize}px Inter, sans-serif`;
+    context.font = `${fontSize}px ITC Avant Garde, sans-serif`;
     const textSize = context.measureText(text);
     if (textSize.width <= maxWidth) break;
   }
