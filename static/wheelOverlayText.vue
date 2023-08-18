@@ -74,14 +74,14 @@ limitations under the License.
 <style scoped>
   .instructionsText {
     width: 100%;
-    height: 100%;            
+    height: 100%;
     position: absolute;
     top: 0;
     left: 0;
     color: #FFF;
     text-shadow: 0px 0px 10px #000000;
     background-color: #00000000;
-    font-family: sans-serif;
+    font-family: ITC Avant Garde, sans-serif;
     font-weight: 800;
   }
 </style>

@@ -166,7 +166,7 @@ export default {
   justify-content: center;
   align-items: flex-end;
   position: relative;
-  bottom: calc(var(--wheel-size) * -0.5);
+  /* bottom: calc(var(--wheel-size) * -0.5); */
 }
 .container {
   border: 1px solid #faa;

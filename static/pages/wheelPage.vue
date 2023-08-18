@@ -30,26 +30,11 @@ limitations under the License.
         v-on:set-locale="setLocale"
       ></toolbar>
       <section class="section" style="height:100%; padding-top:1rem; padding-bottom:0">
-        <div class="columns" style="height:100%;">
-          <div class="column is-2">
-            <titleAndDescription
-              v-on:editTitleAndDescription="openTitleAndDescriptionDialog()"
-              :editable="!fullScreen"
-            />
-          </div>
-          <div class="column is-8" v-bind:class="{ 'is-7': fullScreen }">
-            <spinningwheel ref="spinningwheel"
-              v-on:wheel-started="wheelStarted"
-              v-on:name-changed="nameChanged"
-              v-on:wheel-stopped="wheelStopped"
-            ></spinningwheel>
-          </div>
-          <div class="column is-2" style="height:90%;">
-            <name-tabs v-show="!fullScreen" style="height:100%;"
-              v-on:reset-wheel-rotation="resetWheelRotation"
-            />
-          </div>
-        </div>
+        <spinningwheel ref="spinningwheel"
+          v-on:wheel-started="wheelStarted"
+          v-on:name-changed="nameChanged"
+          v-on:wheel-stopped="wheelStopped"
+        ></spinningwheel>
       </section>
     </div>
 
