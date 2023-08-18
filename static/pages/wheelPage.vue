@@ -14,9 +14,9 @@ See the License for the specific language governing permissions and
 limitations under the License.
 -->
 <template>
-  <div style="height: 100%">
+  <div style="height: 99vh">
 
-    <div v-if="!wheelIsShared" :style="$mq=='desktop'?'height: 100%':''">
+    <div v-if="!wheelIsShared" :style="$mq=='desktop'?'height: 99vh':''">
       <toolbar default-cruft
         v-on:show-snackbar-message="showSnackbarMessage"
         v-on:reset-wheel="resetWheel()"
@@ -29,7 +29,7 @@ limitations under the License.
         v-on:open-account-dialog="openAccountDialog()"
         v-on:set-locale="setLocale"
       ></toolbar>
-      <section class="section" style="height:100%; padding-top:1rem; padding-bottom:0">
+      <section class="section slds-align_absolute-center " style="height: 99vh;">
         <spinningwheel ref="spinningwheel"
           v-on:wheel-started="wheelStarted"
           v-on:name-changed="nameChanged"
@@ -39,7 +39,7 @@ limitations under the License.
     </div>
 
     <div v-if="wheelIsShared">
-      <section class="section" style="padding-top:1rem; padding-left:1rem">
+      <section class="section" style="">
         <div class="columns">
           <div class="column is-3" style="font-family:Inter">
             <h3 v-if="wheelTitle" class="subtitle is-3">{{ wheelTitle }}</h3>
@@ -443,4 +443,8 @@ limitations under the License.
 
 <style>
   .can-go-dark {}
+
+  .section {
+    padding: 0;
+  }
 </style>

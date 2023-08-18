@@ -14,7 +14,10 @@ See the License for the specific language governing permissions and
 limitations under the License.
 -->
 <template>
-  <div class="wrapper" :style="cssVars">
+  <div class="wrapper" ref="wrapper" :style="cssVars" :class="{
+    'wheel-aside-enter': wheelAside,
+  }
+">
     <div class="spinningwheel-container container">
       <canvas
         id="wheelCanvas"
@@ -45,6 +48,8 @@ export default {
       displayOverlayText: true,
       animationFrameID: undefined,
       wheelSize: 888,
+      wheelAside: false,
+      wheelReady: true,
     };
   },
   mounted() {
@@ -121,6 +126,7 @@ export default {
       this.trackInGoogleAnalytics();
       this.$emit("wheel-started");
       this.myWheel.click(this.onNameChanged, this.onStopWheelSpin);
+      console.log(this.$refs.wrapper.$el);
     },
     onNameChanged() {
       this.$emit("name-changed");
@@ -128,6 +134,7 @@ export default {
     onStopWheelSpin(winningEntry) {
       this.$store.commit("setWheelBusy", false);
       this.$emit("wheel-stopped", winningEntry);
+      this.wheelAside = true;
     },
     trackInGoogleAnalytics() {
       const label = this.version;
@@ -162,18 +169,20 @@ export default {
 <style scoped>
 .wrapper {
   border: 1px solid #afa;
-  display: flex;
-  justify-content: center;
-  align-items: flex-end;
   position: relative;
-  /* bottom: calc(var(--wheel-size) * -0.5); */
 }
 .container {
   border: 1px solid #faa;
   position: relative;
-  /* transform: translate(0, 22%); */
-  /* bottom: -25%;
-    left: auto;
-    right: auto; */
+  height: 100%;
+  margin: auto;
+
 }
+  .wheel-aside-leave-active, .wheel-aside-enter-active {
+    transition: transform 0.8s ease-in;
+  }
+  .wheel-aside-enter {
+    transform: translateX(-50vw);
+  }
+
 </style>
