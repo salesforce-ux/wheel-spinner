@@ -171,8 +171,6 @@ export default class WheelPainter {
     context.restore();
   }
 
-
-
   drawCenterCircle(context) {
     if (this.wheelConfig.type=='image') return;
     context.save();

@@ -213,12 +213,22 @@ function drawIndexText(context, radius, displayText, textColor) {
   context.textBaseline = 'middle';
   context.textAlign = 'center';
   context.fillStyle = textColor.fill;
-  context.font = "bold 72px ITC Avant Garde";
+  context.font = `${getSizeInPx(radius, 20)} ITC Avant Garde`;
   const textWidth = context.measureText(` ${displayText} `).width;
   const textHeight = context.measureText("M").width; // Approximation of text height
-  context.translate(radius - textHeight, 0);
+  context.translate(radius * 0.66, 0); // position at 66% of radius
   context.rotate(Math.PI/2);
-  context.fillText(` ${displayText} `, 0 , 0);
+  // context.fillText(` ${displayText} `, 0 , 0);
+
+  const lineHeight = parseInt(getSizeInPx(radius,17));
+  // Split the text into an array of lines
+  const lines = displayText.split("");
+
+  // Draw each line of text
+  lines.forEach((line, index) => {
+    context.font = `${getSizeInPx(radius, 20)} ITC Avant Garde`;
+    context.fillText(line, 0, index * lineHeight);
+  });
 
   // context.strokeStyle = "black";
   // context.lineWidth = 1;
@@ -232,6 +242,7 @@ function drawIndexText(context, radius, displayText, textColor) {
 }
 
 function drawColorNameText(context, radius, entry, textColor) {
+  console.log("drawColorNameText:", getSizeInPx(radius, 6));
   context.save();
   const colorName = entry.colorName;
   const colorMood = entry.text;
@@ -240,22 +251,22 @@ function drawColorNameText(context, radius, entry, textColor) {
   context.textBaseline = 'middle';
   context.textAlign = 'center';
   context.fillStyle = textColor.fill;
-  context.font = "24px ITC Avant Garde";
+  context.font = `${getSizeInPx(radius, 6)} ITC Avant Garde`;
   const textWidth = context.measureText(` ${colorName} `).width;
   const textHeight = context.measureText("M").width; // Approximation of text height
-  context.translate(radius - textHeight*5, 0);
+  context.translate(radius*.9, 0); //  // position at 66% of radiusposition at 90% of radius
   context.rotate(Math.PI/2);
 
-  const lineHeight = 24;
+  const lineHeight = parseInt(getSizeInPx(radius, 7.5));
   // Split the text into an array of lines
-  const lines = colorName.split(' ');
+  const lines = colorName.split('\n');
 
   // Draw each line of text
   lines.forEach((line, index) => {
     context.fillText(line, 0, index * lineHeight);
   });
 
-  context.font = "bold 24px ITC Avant Garde";
+  context.font = `${getSizeInPx(radius, 6)} ITC Avant Garde`;
   context.fillText(colorMood, 0, lines.length * lineHeight);
 
   // context.fillText(` ${colorName} `, 0 , 0);
@@ -317,4 +328,10 @@ function getTextColor(bgColor) {
   {
     return '#FFFFFF';
   }
+}
+
+function getSizeInPx(radius, size) {
+  // this returns a pixel value relative to the radius
+  console.log(`${((size * radius) / 100).toFixed(1)}px`);
+  return `${((size * radius) / 100).toFixed(1)}px`;
 }
