@@ -112,6 +112,13 @@ limitations under the License.
       v-on:stop-wait-animation="stopWaitAnimation"
       v-on:auth-error="authError"
     ></accountdialog>
+    <mockorg
+      ref="mockorg"
+      v-on:remove-entry="removeEntry"
+      v-on:remove-entry-all="removeEntryAll"
+      v-on:hide-entry="hideEntry"
+      v-on:dialog-closed="readyTheWheel"
+    ></mockorg>
     <winnerdialog
       ref="winnerdialog"
       v-on:remove-entry="removeEntry"
@@ -141,6 +148,7 @@ limitations under the License.
   import sheetdialog from '../sheetdialog.vue';
   import accountdialog from '../accountdialog.vue';
   import winnerdialog from '../winnerdialog.vue';
+  import mockorg from '../mockorg.vue';
   import titleAndDescriptionDialog from '../titleAndDescriptionDialog.vue';
   import titleAndDescription from '../titleAndDescription.vue';
   import muteToggle from '../muteToggle.vue';
@@ -156,7 +164,7 @@ limitations under the License.
   export default {
     components: {
       toolbar, spinningwheel, nameTabs, opendialog,
-      winnerdialog, savedialog, optionsdialog, sharedialog, twitterdialog,
+      mockorg, winnerdialog, savedialog, optionsdialog, sharedialog, twitterdialog,
       sheetdialog, accountdialog, winneranimation,
       aboutCards, titleAndDescription, muteToggle, titleAndDescriptionDialog
     },
@@ -336,7 +344,8 @@ limitations under the License.
           ConfettiLauncher.launch(this.wheelConfig.getCoalescedColors());
         }
         if (this.wheelConfig.displayWinnerDialog) {
-          this.$refs.winnerdialog.show(winningEntry);
+          this.$refs.mockorg.show(winningEntry);
+          // this.$refs.winnerdialog.show(winningEntry);
         }
         if (this.wheelConfig.autoRemoveWinner) {
           const duration = 5;
@@ -385,6 +394,7 @@ limitations under the License.
         this.showSnackbarMessage(msg);
       },
       hideEntry(entry) {
+        // this is the handler when the dialog close button is clicked
         if (this.wheelConfig.playClickWhenWinnerRemoved) {
           Audio.playClick(this.wheelConfig.afterSpinSoundVolume);
         }
@@ -402,6 +412,10 @@ limitations under the License.
           ariaModal: true,
           onConfirm: () => location.reload(true)
         })
+      },
+      readyTheWheel() {
+        console.log('ready the wheel');
+        this.$refs.spinningwheel.readyMarkSet();
       },
       resetWheelRotation() {
         this.$refs.spinningwheel.resetRotation();

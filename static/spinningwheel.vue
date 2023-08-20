@@ -126,7 +126,6 @@ export default {
       this.trackInGoogleAnalytics();
       this.$emit("wheel-started");
       this.myWheel.click(this.onNameChanged, this.onStopWheelSpin);
-      console.log(this.$refs.wrapper.$el);
     },
     onNameChanged() {
       this.$emit("name-changed");
@@ -135,6 +134,10 @@ export default {
       this.$store.commit("setWheelBusy", false);
       this.$emit("wheel-stopped", winningEntry);
       this.wheelAside = true;
+    },
+    readyMarkSet() {
+      this.wheelReady = true;
+      this.wheelAside = false;
     },
     trackInGoogleAnalytics() {
       const label = this.version;
@@ -178,7 +181,7 @@ export default {
   margin: auto;
 
 }
-  .wheel-aside-leave-active, .wheel-aside-enter-active {
+  .wrapper, .wheel-aside-leave-active, .wheel-aside-enter-active {
     transition: transform 0.8s ease-in;
   }
   .wheel-aside-enter {
