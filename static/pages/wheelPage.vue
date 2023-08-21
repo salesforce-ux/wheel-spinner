@@ -36,6 +36,9 @@ limitations under the License.
           v-on:wheel-stopped="wheelStopped"
         ></spinningwheel>
       </section>
+      <button class="slds-button slds-button--neutral button-reset" @click="resetWheel">
+        Reset Wheel
+      </button>
     </div>
 
     <div v-if="wheelIsShared">
@@ -460,5 +463,16 @@ limitations under the License.
 
   .section {
     padding: 0;
+  }
+
+  .button-reset {
+    position:absolute;
+    right: 1rem;
+    bottom: 1rem;
+    opacity: 0.25;
+
+    &:hover {
+      opacity: 1;
+    }
   }
 </style>
