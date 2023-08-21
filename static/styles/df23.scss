@@ -32,3 +32,14 @@ body {
 .b-tabs {
   display: none;
 }
+
+// override modal styles
+.modal-background,
+.modal-card-head,
+.modal-card-foot,
+.modal.is-full-screen>.animation-content,
+.modal.is-full-screen>.animation-content>.modal-card,
+.modal-card-body {
+  border: 0;
+  background: transparent;
+}

@@ -16,13 +16,6 @@ limitations under the License.
 <template>
   <b-modal :active.sync="winnerDialogVisible" full-screen scroll="keep">
     <div class="modal-card" style="width: auto">
-      <header class="modal-card-head">
-        <div class="modal-card-title" style="width: 100%">
-          <h5 class="modal-title">
-            {{ winnerMessage }}
-          </h5>
-        </div>
-      </header>
       <section class="modal-card-body can-go-dark">
         <h1 class="title">
           <img src="/images/org-mock-82-100-100.jpg" style="vertical-align: middle" />
