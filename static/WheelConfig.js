@@ -48,7 +48,7 @@ export default class WheelConfig {
       { color: "#7526E3", enabled: true },
       { color: "#EA001E", enabled: true },
     ];
-    this.pageBackgroundColor = '#FFFFFF';
+    this.pageBackgroundColor = 'none';
     this.type = 'color';
     this.pictureType = 'none';
     this.coverImageType = '';

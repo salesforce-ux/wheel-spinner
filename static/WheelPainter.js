@@ -62,6 +62,7 @@ export default class WheelPainter {
   drawBackgroundColor(context) {
     if (this.backgroundColor=='#FFFFFF') return;
     context.save();
+    context.globalAlpha = 0.0;
     context.fillStyle = this.backgroundColor;
     context.fillRect(0, 0, context.canvas.width, context.canvas.height);
     context.restore();
