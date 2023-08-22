@@ -20,7 +20,7 @@ limitations under the License.
 
 
         <!-- <img src="/images/org-mock-82-100-100.jpg" style="vertical-align: middle" /> -->
-        <iframe src="https://df22-styling-hooks.herokuapp.com"></iframe>
+        <iframe :src="iframeUrl"></iframe>
 
         <!-- <h1 class="title">
           <img v-if="winnerImage" :src="winnerImage" style="height:200px;vertical-align:middle">
@@ -78,6 +78,7 @@ export default {
       winnerText: "",
       winnerImage: "",
       winnerEntry: "",
+      iframeUrl: "",
     };
   },
   computed: {
@@ -117,6 +118,7 @@ export default {
       this.winnerText = winnerEntry.text;
       this.winnerImage = winnerEntry.image;
       this.winnerDialogVisible = true;
+      this.iframeUrl = `https://df22-styling-hooks.herokuapp.com?color=${winnerEntry.color.substring(1)}`;
       this.setFocusOnRemoveButton();
     },
     setFocusOnRemoveButton() {
