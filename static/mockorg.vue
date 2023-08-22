@@ -74,6 +74,7 @@ import { mapGetters } from "vuex";
 export default {
   data() {
     return {
+      MOCK_ORG_URL: "https://df23-styling-hooks-518c2f9ded87.herokuapp.com/",
       winnerDialogVisible: false,
       winnerText: "",
       winnerImage: "",
@@ -118,7 +119,7 @@ export default {
       this.winnerText = winnerEntry.text;
       this.winnerImage = winnerEntry.image;
       this.winnerDialogVisible = true;
-      this.iframeUrl = `https://df22-styling-hooks.herokuapp.com?color=${winnerEntry.color.substring(1)}`;
+      this.iframeUrl = `${this.MOCK_ORG_URL}?display-mode&color=${winnerEntry.color.substring(1)}`;
       this.setFocusOnRemoveButton();
     },
     setFocusOnRemoveButton() {
