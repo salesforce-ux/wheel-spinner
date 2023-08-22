@@ -112,6 +112,7 @@ export default {
   },
   methods: {
     show(winnerEntry) {
+      console.log("winnerEntry", winnerEntry);
       this.winnerEntry = winnerEntry;
       this.winnerText = winnerEntry.text;
       this.winnerImage = winnerEntry.image;

@@ -116,7 +116,7 @@ export default class PieSlice {
 }
 
 function drawBackColor(context, radius, radians, color) {
-  console.log(radius, radians, color);
+  // console.log(radius, radians, color);
   context.beginPath();
   context.moveTo(0, 0);
   context.arc(0, 0, radius, -radians/2, radians/2);
@@ -242,7 +242,7 @@ function drawIndexText(context, radius, displayText, textColor) {
 }
 
 function drawColorNameText(context, radius, entry, textColor) {
-  console.log("drawColorNameText:", getSizeInPx(radius, 6));
+  // console.log("drawColorNameText:", getSizeInPx(radius, 6));
   context.save();
   const colorName = entry.colorName;
   const colorMood = entry.text;

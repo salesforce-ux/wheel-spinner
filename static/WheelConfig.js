@@ -21,33 +21,50 @@ export default class WheelConfig {
     this.title = '';
     this.description = '';
     this.entries = [
-      { text: "Default", colorName: "Cloud Blue", colorTint: "60" },
-      { text: "Cozy", colorName: "Teal", colorTint: "70" },
-      { text: "Efficient", colorName: "Orange", colorTint: "70" },
-      { text: "Default", colorName: "Pink", colorTint: "50" },
-      { text: "Cozy", colorName: "Green", colorTint: "70" },
-      { text: "Efficient", colorName: "Violet", colorTint: "30" },
-      { text: "Default", colorName: "Hot Orange", colorTint: "60" },
-      { text: "Cozy", colorName: "Indigo", colorTint: "40" },
-      { text: "Efficient", colorName: "Yellow", colorTint: "80" },
-      { text: "Default", colorName: "Blue", colorTint: "50" },
-      { text: "Cozy", colorName: "Purple", colorTint: "40" },
-      { text: "Efficient", colorName: "Red", colorTint: "50" },
+      {
+        text: "Default",
+        colorName: "Cloud Blue",
+        colorTint: "60",
+        color: "#0D9DDA",
+      },
+      { text: "Cozy", colorName: "Teal", colorTint: "70", color: "#01C3B3" },
+      {
+        text: "Efficient",
+        colorName: "Orange",
+        colorTint: "70",
+        color: "#FE9339",
+      },
+      { text: "Default", colorName: "Pink", colorTint: "50", color: "#E3066A" },
+      { text: "Cozy", colorName: "Green", colorTint: "70", color: "#45C65A" },
+      {
+        text: "Efficient",
+        colorName: "Violet",
+        colorTint: "30",
+        color: "#730394",
+      },
+      {
+        text: "Default",
+        colorName: "Hot Orange",
+        colorTint: "60",
+        color: "#FF5D2D",
+      },
+      { text: "Cozy", colorName: "Indigo", colorTint: "40", color: "#3A49DA" },
+      {
+        text: "Efficient",
+        colorName: "Yellow",
+        colorTint: "80",
+        color: "#FCC003",
+      },
+      { text: "Default", colorName: "Blue", colorTint: "50", color: "#0176D3" },
+      { text: "Cozy", colorName: "Purple", colorTint: "40", color: "#7526E3" },
+      {
+        text: "Efficient",
+        colorName: "Red",
+        colorTint: "50",
+        color: "#EA001E",
+      },
     ];
-    this.colorSettings = [
-      { color: "#0D9DDA", enabled: true },
-      { color: "#01C3B3", enabled: true },
-      { color: "#FE9339", enabled: true },
-      { color: "#E3066A", enabled: true },
-      { color: "#45C65A", enabled: true },
-      { color: "#730394", enabled: true },
-      { color: "#FF5D2D", enabled: true },
-      { color: "#3A49DA", enabled: true },
-      { color: "#FCC003", enabled: true },
-      { color: "#0176D3", enabled: true },
-      { color: "#7526E3", enabled: true },
-      { color: "#EA001E", enabled: true },
-    ];
+    this.colorSettings = this.entries.map(entry => ({ color: entry.color, enabled: true}));
     this.pageBackgroundColor = 'none';
     this.type = 'color';
     this.pictureType = 'none';
