@@ -17,9 +17,13 @@ limitations under the License.
   <b-modal :active.sync="winnerDialogVisible" full-screen scroll="keep">
     <div class="modal-card" style="width: auto">
       <section class="modal-card-body can-go-dark">
-        <h1 class="title">
-          <img src="/images/org-mock-82-100-100.jpg" style="vertical-align: middle" />
-          <!-- <img v-if="winnerImage" :src="winnerImage" style="height:200px;vertical-align:middle">
+
+
+        <!-- <img src="/images/org-mock-82-100-100.jpg" style="vertical-align: middle" /> -->
+        <iframe src="https://df22-styling-hooks.herokuapp.com"></iframe>
+
+        <!-- <h1 class="title">
+          <img v-if="winnerImage" :src="winnerImage" style="height:200px;vertical-align:middle">
           <span v-if="winnerTextIsLink">
             <a target="_new" :href="winnerText">
               {{winnerText}}
@@ -27,8 +31,8 @@ limitations under the License.
           </span>
           <span v-if="!winnerTextIsLink">
             {{winnerText}}
-          </span> -->
-        </h1>
+          </span>
+        </h1> -->
       </section>
       <footer class="modal-card-foot" style="justify-content: flex-end">
         <b-field grouped group-multiline>
@@ -140,3 +144,13 @@ export default {
   },
 };
 </script>
+
+<style>
+iframe {
+  width: 100%;
+  height: 100%;
+}
+button.modal-close {
+  display: none;
+}
+</style>
