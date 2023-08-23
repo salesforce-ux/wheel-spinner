@@ -171,11 +171,11 @@ export default {
 
 <style scoped>
 .wrapper {
-  border: 1px solid #afa;
+  /* border: 1px solid #afa; */
   position: relative;
 }
 .container {
-  border: 1px solid #faa;
+  /* border: 1px solid #faa; */
   position: relative;
   height: 100%;
   margin: auto;
