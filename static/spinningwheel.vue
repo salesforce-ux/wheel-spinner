@@ -45,7 +45,7 @@ export default {
     return {
       myWheel: {},
       myTicker: new Ticker(),
-      displayOverlayText: true,
+      displayOverlayText: false,
       animationFrameID: undefined,
       wheelSize: 888,
       wheelAside: false,
