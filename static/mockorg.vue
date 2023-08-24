@@ -151,8 +151,9 @@ export default {
 
 <style>
 iframe {
-  width: 100%;
+  width: 75%;
   height: 100%;
+  margin-left: 25%;
 }
 button.modal-close {
   display: none;
