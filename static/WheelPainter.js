@@ -19,7 +19,7 @@ import * as FontPicker from './FontPicker.js';
 import * as hubSizes from './hubSizes.js';
 import * as Util from './Util.js';
 import * as ImageUtil from './ImageUtil.js';
-
+import './images/logo@2x.png';
 
 export default class WheelPainter {
 
@@ -43,6 +43,7 @@ export default class WheelPainter {
     this.drawCoverImage(context);
     this.drawWheel(context);
     this.drawPointer(context);
+    this.drawLogo(context);
     this.drawCenterImage(context);
     this.drawCoverPlate(context);
   }
@@ -188,6 +189,24 @@ export default class WheelPainter {
       context.strokeStyle = '#333333';
       context.stroke();
     }
+    context.restore();
+  }
+
+  drawLogo(context) {
+    const image = this.imageCache.getImage("/images/logo@2x.png");
+    const scalePercentage = 75;
+    if (!image) return;
+    context.save();
+    context.translate(context.canvas.width/2, context.canvas.height/2);
+    context.beginPath();
+    const radius = (this.hubRadius - 1) * (scalePercentage / 100); // Calculate scaled radius
+    context.arc(0, 0, radius, 0, Math.PI * 2, true); // Use 0 as the y-coordinate for centering
+    // context.clip();
+
+    const imageSize = this.hubRadius * 2 * (scalePercentage / 100); // Calculate scaled image size
+    const imageOffset = -imageSize / 2; // Calculate offset for centering the image
+    context.drawImage(image, imageOffset, imageOffset, imageSize, imageSize);
+
     context.restore();
   }
 
