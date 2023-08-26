@@ -50,7 +50,7 @@ limitations under the License.
     position: fixed;
     display: none;
     width: 100%;
-    height: 99vh;
+    height: 100vh; /* 99vh */;
     top: 0;
     left: 0;
     right: 0;

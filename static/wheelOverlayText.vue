@@ -74,7 +74,7 @@ limitations under the License.
 <style scoped>
   .instructionsText {
     width: 100%;
-    height: 99vh;
+    height: 100vh; /* 99vh */;
     position: absolute;
     top: 0;
     left: 0;

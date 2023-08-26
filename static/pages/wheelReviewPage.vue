@@ -14,7 +14,7 @@ See the License for the specific language governing permissions and
 limitations under the License.
 -->
 <template>
-  <div style="height: 99vh">
+  <div style="height: 100vh; /* 99vh */">
     <b-navbar type='is-info' style="box-shadow: 0 3px 3px 0 lightgrey">
       <template slot="brand">
         <b-navbar-item style="font-size:24px" @click="$router.push('/')">

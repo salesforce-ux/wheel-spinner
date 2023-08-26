@@ -105,7 +105,7 @@ limitations under the License.
 
 <style>
   section {
-    height: 99vh;
+    height: 100vh; /* 99vh */;
   }
   .my-tab-item {
     flex-grow: 1;

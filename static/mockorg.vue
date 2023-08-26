@@ -20,8 +20,10 @@ limitations under the License.
 
 
         <!-- <img src="/images/org-mock-82-100-100.jpg" style="vertical-align: middle" /> -->
-        <iframe :src="iframeUrl"></iframe>
-
+        <div class="iframe-container">
+          <iframe id="iframe-base" :src="iframeBaseUrl" @load="onIframeLoaded"></iframe>
+          <iframe id="iframe-overlay" :src="iframeOverlayUrl" @load="onIframeLoaded"></iframe>
+        </div>
         <!-- <h1 class="title">
           <img v-if="winnerImage" :src="winnerImage" style="height:200px;vertical-align:middle">
           <span v-if="winnerTextIsLink">
@@ -79,7 +81,8 @@ export default {
       winnerText: "",
       winnerImage: "",
       winnerEntry: "",
-      iframeUrl: "",
+      iframeBaseUrl: "",
+      iframeOverlayUrl: "",
     };
   },
   computed: {
@@ -119,8 +122,12 @@ export default {
       this.winnerText = winnerEntry.text;
       this.winnerImage = winnerEntry.image;
       this.winnerDialogVisible = true;
-      this.iframeUrl = `${this.MOCK_ORG_URL}?display-mode&color=${winnerEntry.color.substring(1)}`;
+      this.iframeBaseUrl = this.getIframeUrl("cccccc");
+      this.iframeOverlayUrl = this.getIframeUrl(winnerEntry.color.substring(1));
       this.setFocusOnRemoveButton();
+    },
+    getIframeUrl(color) {
+      return `${this.MOCK_ORG_URL}?display-mode&color=${color}`;
     },
     setFocusOnRemoveButton() {
       this.$nextTick(() => {
@@ -145,11 +152,15 @@ export default {
       this.$emit("hide-entry", this.winnerEntry);
       this.winnerDialogVisible = false;
     },
+    onIframeLoaded(e) {
+      // This method is called when the iframe DOMContentLoaded event is emitted
+      console.log('The iframe DOMContentLoaded event has been emitted!', e.target);
+    },
   },
 };
 </script>
 
-<style>
+<style lang="scss">
 iframe {
   width: 75%;
   height: 100%;
@@ -157,5 +168,24 @@ iframe {
 }
 button.modal-close {
   display: none;
+}
+
+.iframe-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+
+  iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 75%;
+    height: 100%;
+  }
+
+}
+
+#iframe-overlay {
+  opacity:0.5;
 }
 </style>
