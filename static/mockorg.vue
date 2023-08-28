@@ -14,8 +14,9 @@ See the License for the specific language governing permissions and
 limitations under the License.
 -->
 <template>
-  <b-modal :active.sync="winnerDialogVisible" full-screen scroll="keep"
-  :onCancel="closeModal">
+  <b-modal :active.sync="winnerDialogVisible" full-screen scroll="keep" :onCancel="closeModal" :class="{
+    'result-enter': introResult,
+  }" >
     <div class="modal-card" style="width: auto">
       <section class="modal-card-body can-go-dark">
 
@@ -84,6 +85,7 @@ export default {
       winnerEntry: "",
       iframeBaseUrl: "",
       iframeOverlayUrl: "",
+      introResult: false,
     };
   },
   computed: {
@@ -166,6 +168,7 @@ export default {
     onIframeLoaded(e) {
       // This method is called when the iframe DOMContentLoaded event is emitted
       console.log('The iframe DOMContentLoaded event has been emitted!', e.target);
+      this.introResult = true;
     },
   },
   mounted() {
@@ -174,7 +177,7 @@ export default {
 };
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 iframe {
   width: 75%;
   height: 100%;
@@ -188,6 +191,7 @@ button.modal-close {
   position: relative;
   width: 100%;
   height: 100%;
+  // border: 8px solid rebeccapurple;
 
   iframe {
     position: absolute;
@@ -196,10 +200,32 @@ button.modal-close {
     width: 75%;
     height: 100%;
   }
-
 }
 
-#iframe-overlay {
-  opacity:0.5;
+.modal.is-active, .result-leave-active, .result-enter-active {
+  .iframe-container {
+    transition: transform 0.8s ease-in-out;
+    transform: translateY(50vw);
+  }
+  iframe {
+    transition: opacity 1s ease-in-out;
+    opacity: 0;
+  }
 }
+.modal.is-active.result-enter {
+  .iframe-container {
+    transform: translateY(0vw);
+  }
+
+  #iframe-base {
+    transition-delay: 0.5s;
+    opacity: 1;
+  }
+
+  #iframe-overlay {
+    transition-delay: 3s;
+    opacity: 1;
+  }
+}
+
 </style>
