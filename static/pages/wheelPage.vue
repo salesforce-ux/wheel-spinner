@@ -15,6 +15,10 @@ limitations under the License.
 -->
 <template>
   <div style="height: 100vh; /* 99vh */">
+    <div id="background-elements">
+      <div id="background-astro" class="background-element" :style="bgAstroLeft"></div>
+      <!-- <img src="/images/astro-left.png"/> -->
+    </div>
 
     <div v-if="!wheelIsShared" :style="$mq=='desktop'?'height: 100vh; /* 99vh */':''">
       <toolbar default-cruft
@@ -164,6 +168,8 @@ limitations under the License.
   import * as i18nSetup from '../i18n-setup.js';
   import { mapGetters } from "vuex";
 
+  import '../images/astro-left.png';
+
   export default {
     components: {
       toolbar, spinningwheel, nameTabs, opendialog,
@@ -192,7 +198,12 @@ limitations under the License.
       this.warnInternetExplorerUsers();
     },
     data() {
-      return {waitAnimation: {}};
+      return {
+        waitAnimation: {},
+        // imgAstroLeft: require('../images/astro-left.png'),
+        bgAstroLeft: "background-image: url('/images/astro-left.png')",
+        // bgAstroLeftRequire: `background-image: url('${require('../images/astro-left.png')}')`,
+      };
     },
     computed: {
       wheelTitle() {
@@ -474,5 +485,19 @@ limitations under the License.
     &:hover {
       opacity: 1;
     }
+  }
+
+  #background-elements, .background-element {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-repeat: no-repeat;
+  }
+
+  #background-astro {
+    background-position: left bottom;
+    background-size: 20%;
   }
 </style>
