@@ -108,7 +108,7 @@ export default {
       if (!Util.isTouchScreen()) {
         const self = this;
         document.addEventListener("keyup", (event) => {
-          console.log("keyup", event);
+          // console.log("keyup", event);
           if (event.key == "Enter" && event.ctrlKey || event.code == "Space") {
             self.spin();
           }

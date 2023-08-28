@@ -14,7 +14,8 @@ See the License for the specific language governing permissions and
 limitations under the License.
 -->
 <template>
-  <b-modal :active.sync="winnerDialogVisible" full-screen scroll="keep">
+  <b-modal :active.sync="winnerDialogVisible" full-screen scroll="keep"
+  :onCancel="closeModal">
     <div class="modal-card" style="width: auto">
       <section class="modal-card-body can-go-dark">
 
@@ -116,6 +117,16 @@ export default {
     ...mapGetters(["wheelConfig", "wheelIsShared"]),
   },
   methods: {
+    closeModal(howClosed) {
+      console.log("modal closed:", howClosed);
+      this.winnerDialogVisible = false;
+      this.$emit("dialog-closed", this.winnerEntry);
+    },
+    startKeyListener() {
+      document.addEventListener("keyup", (event) => {
+        console.log("mockorg keyup", event);
+      });
+    },
     show(winnerEntry) {
       console.log("winnerEntry", winnerEntry);
       this.winnerEntry = winnerEntry;
@@ -137,8 +148,8 @@ export default {
       });
     },
     close() {
-      this.winnerDialogVisible = false;
-      this.$emit("dialog-closed", this.winnerEntry);
+      console.log("close", this.winnerEntry);
+      this.closeModal("close");
     },
     removeWinner() {
       this.$emit("remove-entry", this.winnerEntry);
@@ -156,6 +167,9 @@ export default {
       // This method is called when the iframe DOMContentLoaded event is emitted
       console.log('The iframe DOMContentLoaded event has been emitted!', e.target);
     },
+  },
+  mounted() {
+    this.startKeyListener();
   },
 };
 </script>

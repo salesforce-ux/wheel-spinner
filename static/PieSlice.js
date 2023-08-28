@@ -169,7 +169,7 @@ function drawBackColorNew(context, radius, radians, color) {
       startX + Math.cos(arcStart + radians * (i / numPegs)) * (radius + 6);
     var y =
       startY + Math.sin(arcStart + radians * (i / numPegs)) * (radius + 6);
-    console.log(i, "x:", x, "y:", y);
+    // console.log(i, "x:", x, "y:", y);
     context.beginPath();
     context.arc(x, y, pegRadius, 0, 2 * Math.PI);
     context.fillStyle = "#fff";
@@ -332,6 +332,6 @@ function getTextColor(bgColor) {
 
 function getSizeInPx(radius, size) {
   // this returns a pixel value relative to the radius
-  console.log(`${((size * radius) / 100).toFixed(1)}px`);
+  // console.log(`${((size * radius) / 100).toFixed(1)}px`);
   return `${((size * radius) / 100).toFixed(1)}px`;
 }
