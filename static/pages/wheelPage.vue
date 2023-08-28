@@ -17,6 +17,8 @@ limitations under the License.
   <div style="height: 100vh; /* 99vh */">
     <div id="background-elements">
       <div id="background-astro" class="background-element" :style="bgAstroLeft"></div>
+      <div id="background-clouds" class="background-element" :style="bgCloudsMiddle"></div>
+      <div id="background-cody" class="background-element" :style="bgCodyRight"></div>
       <!-- <img src="/images/astro-left.png"/> -->
     </div>
 
@@ -169,6 +171,8 @@ limitations under the License.
   import { mapGetters } from "vuex";
 
   import '../images/astro-left.png';
+  import '../images/clouds-middle.png';
+  import '../images/cody-right.png';
 
   export default {
     components: {
@@ -202,6 +206,8 @@ limitations under the License.
         waitAnimation: {},
         // imgAstroLeft: require('../images/astro-left.png'),
         bgAstroLeft: "background-image: url('/images/astro-left.png')",
+        bgCloudsMiddle: "background-image: url('/images/clouds-middle.png')",
+        bgCodyRight: "background-image: url('/images/cody-right.png')",
         // bgAstroLeftRequire: `background-image: url('${require('../images/astro-left.png')}')`,
       };
     },
@@ -497,7 +503,17 @@ limitations under the License.
   }
 
   #background-astro {
-    background-position: left bottom;
+    background-position: 0vw bottom;
     background-size: 20%;
+  }
+
+  #background-clouds {
+    background-position: 35vw bottom;
+    background-size: 45%;
+  }
+
+  #background-cody {
+    background-position: 65vw bottom;
+    background-size: 45%;
   }
 </style>
