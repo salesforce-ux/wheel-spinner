@@ -509,7 +509,7 @@ limitations under the License.
     height: 100vh;
     background-repeat: no-repeat;
     transition-property: background-position-x, transform;
-    transition-timing-function: ease-out;
+    transition-timing-function: ease-in-out;
   }
 
   #background-astro {
@@ -526,19 +526,22 @@ limitations under the License.
 
   #background-cody {
     background-position: 150vw bottom;
-    background-size: 35%;
+    background-size: 28%;
     transition-duration: 1.5s;
   }
 
   .wheel-aside-enter {
+
     #background-astro {
       background-position-x: -50vw;
     }
+
     #background-clouds {
       background-position-x: 10vw;
     }
+
     #background-cody {
-      background-position-x: 77vw;
+      background-position-x: 83vw;
     }
   }
   </style>

@@ -177,15 +177,19 @@ export default {
 };
 </script>
 
+<style>
+.modal button.modal-close {
+  visibility: hidden;
+}
+</style>
+
 <style lang="scss" scoped>
 iframe {
   width: 75%;
   height: 100%;
   margin-left: 25%;
 }
-button.modal-close {
-  display: none;
-}
+
 
 .iframe-container {
   position: relative;
@@ -197,7 +201,7 @@ button.modal-close {
     position: absolute;
     top: 0;
     left: 0;
-    width: 75%;
+    width: 66%;
     height: 100%;
   }
 }
