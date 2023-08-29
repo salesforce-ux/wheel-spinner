@@ -15,7 +15,9 @@ limitations under the License.
 -->
 <template>
   <div style="height: 100vh; /* 99vh */">
-    <div id="background-elements">
+    <div id="background-elements" :class="{
+      'wheel-aside-enter': wheelAside,
+    }">
       <div id="background-astro" class="background-element" :style="bgAstroLeft"></div>
       <div id="background-clouds" class="background-element" :style="bgCloudsMiddle"></div>
       <div id="background-cody" class="background-element" :style="bgCodyRight"></div>
@@ -203,6 +205,7 @@ limitations under the License.
     },
     data() {
       return {
+        wheelAside: false,
         waitAnimation: {},
         // imgAstroLeft: require('../images/astro-left.png'),
         bgAstroLeft: "background-image: url('/images/astro-left.png')",
@@ -355,6 +358,7 @@ limitations under the License.
         Audio.startMusic(this.wheelConfig.duringSpinSound, this.wheelConfig.duringSpinSoundVolume);
       },
       wheelStopped(winningEntry) {
+        this.wheelAside = true;
         Audio.fadeMusic();
         this.$store.commit('addWinner', winningEntry);
         if (this.wheelConfig.animateWinner) {
@@ -435,6 +439,7 @@ limitations under the License.
       },
       readyTheWheel() {
         console.log('ready the wheel');
+        this.wheelAside = false;
         this.$refs.spinningwheel.readyMarkSet();
       },
       resetWheelRotation() {
@@ -500,20 +505,37 @@ limitations under the License.
     width: 100vw;
     height: 100vh;
     background-repeat: no-repeat;
+    transition-property: background-position-x, transform;
+    transition-timing-function: ease-out;
   }
 
   #background-astro {
-    background-position: 0vw bottom;
-    background-size: 20%;
+    background-position: -5vw bottom;
+    background-size: 30%;
+    transition-duration: 1s;
   }
 
   #background-clouds {
-    background-position: 35vw bottom;
+    background-position: 70vw bottom;
     background-size: 45%;
+    transition-duration: 1s;
   }
 
   #background-cody {
-    background-position: 65vw bottom;
-    background-size: 45%;
+    background-position: 150vw bottom;
+    background-size: 35%;
+    transition-duration: 1.5s;
   }
-</style>
+
+  .wheel-aside-enter {
+    #background-astro {
+      background-position-x: -50vw;
+    }
+    #background-clouds {
+      background-position-x: 10vw;
+    }
+    #background-cody {
+      background-position-x: 77vw;
+    }
+  }
+  </style>
