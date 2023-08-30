@@ -44,6 +44,7 @@ limitations under the License.
           v-on:wheel-stopped="wheelStopped"
         ></spinningwheel>
       </section>
+      <gamesign></gamesign>
       <button class="slds-button slds-button--neutral button-reset" @click="resetWheel">
         Reset Wheel
       </button>
@@ -162,6 +163,7 @@ limitations under the License.
   import mockorg from '../mockorg.vue';
   import titleAndDescriptionDialog from '../titleAndDescriptionDialog.vue';
   import titleAndDescription from '../titleAndDescription.vue';
+  import gamesign from '../gamesign.vue';
   import muteToggle from '../muteToggle.vue';
   import winneranimation from '../winneranimation.vue';
   import * as ConfettiLauncher from '../ConfettiLauncher.js';
@@ -181,7 +183,8 @@ limitations under the License.
       toolbar, spinningwheel, nameTabs, opendialog,
       mockorg, winnerdialog, savedialog, optionsdialog, sharedialog, twitterdialog,
       sheetdialog, accountdialog, winneranimation,
-      aboutCards, titleAndDescription, muteToggle, titleAndDescriptionDialog
+      aboutCards, titleAndDescription, muteToggle, titleAndDescriptionDialog,
+      gamesign
     },
     async mounted() {
       this.$store.state.wheel.$t = this.translateMe;
