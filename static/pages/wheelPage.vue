@@ -37,7 +37,7 @@ limitations under the License.
         v-on:open-account-dialog="openAccountDialog()"
         v-on:set-locale="setLocale"
       ></toolbar>
-      <section class="section slds-align_absolute-center " style="height: 100vh; /* 99vh */;">
+      <section class="section slds-align_absolute-center" style="height: 100vh; /* 99vh */;">
         <spinningwheel ref="spinningwheel"
           v-on:wheel-started="wheelStarted"
           v-on:name-changed="nameChanged"

@@ -15,36 +15,46 @@ limitations under the License.
 -->
 <template>
   <div class="wrapper">
-    <h1 id="game-sign" class="">Hey, this is a game sign!</h1>
+    <h1 id="game-sign" :style="bgImg">Design with Styling Hooks</h1>
   </div>
 </template>
 
 <script>
-  export default {
-    data() {
-      return {
-        foo: "bar"
-      }
-    },
-    computed: {
-    },
-    watch: {
-    }
-  }
+import './images/sign-dust.png';
+
+export default {
+  data() {
+    return {
+      bgImg: "background-image: url('/images/sign-dust.png')",
+    };
+  },
+  computed: {},
+  watch: {},
+};
 </script>
 
 <style scoped>
-  .wrapper {
-    position: absolute;
-    top: 3rem;
-    left: 50%;
-    margin-left: -25vw;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 50vw;
-  }
-  h1 {
-    color: red;
-  }
+.wrapper {
+  position: absolute;
+  top: 3rem;
+  left: 50%;
+  margin-left: -25vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 50vw;
+}
+h1 {
+  font-family: ITC Avant Garde, sans-serif;
+  font-weight: 800;
+  color: #fff;
+  background: no-repeat center center;
+  background-color: #371493;
+  background-size: contain;
+  border-radius: 10rem;
+  font-size: 4rem;
+  vertical-align: middle;
+  padding-inline: 8rem;
+  line-height: 1.66;
+}
 </style>
