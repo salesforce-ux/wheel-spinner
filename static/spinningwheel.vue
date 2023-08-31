@@ -47,7 +47,7 @@ export default {
       myTicker: new Ticker(),
       displayOverlayText: false,
       animationFrameID: undefined,
-      wheelSize: 1088,
+      wheelSize: 988,
       wheelAside: false,
       wheelReady: true,
     };

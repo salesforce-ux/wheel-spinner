@@ -56,5 +56,6 @@ h1 {
   vertical-align: middle;
   padding-inline: 8rem;
   line-height: 1.66;
+  text-wrap: nowrap;
 }
 </style>

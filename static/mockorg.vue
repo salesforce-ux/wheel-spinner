@@ -85,7 +85,10 @@ export default {
       winnerEntry: "",
       iframeBaseUrl: "",
       iframeOverlayUrl: "",
+      iframeBaseLoaded: false,
+      iframeOverlayLoaded: false,
       introResult: false,
+
     };
   },
   computed: {
@@ -131,6 +134,7 @@ export default {
     },
     show(winnerEntry) {
       console.log("winnerEntry", winnerEntry);
+      this.handleResultDisplay();
       this.winnerEntry = winnerEntry;
       this.winnerText = winnerEntry.text;
       this.winnerImage = winnerEntry.image;
@@ -168,8 +172,25 @@ export default {
     onIframeLoaded(e) {
       // This method is called when the iframe DOMContentLoaded event is emitted
       console.log('The iframe DOMContentLoaded event has been emitted!', e.target);
-      this.introResult = true;
+      // this.introResult = true;
+      console.log("e.target.id", e.target.id);
+      if(e.target.id === "iframe-base") this.iframeBaseLoaded = true;
+      if(e.target.id === "iframe-overlay") this.iframeOverlayLoaded = true;
     },
+    handleResultDisplay() {
+      let intervalCheck;
+      // make a timeout for 4 seconds, that then creates an interval for every second
+      setTimeout(() => {
+        this.introResult = false;
+        intervalCheck = setInterval(() => {
+          console.log("intervalCheck", this.iframeBaseLoaded, this.iframeOverlayLoaded);
+          if (this.iframeBaseLoaded && this.iframeOverlayLoaded) {
+            clearInterval(intervalCheck);
+            this.introResult = true;
+          }
+        }, 1000);
+      }, 4000);
+    }
   },
   mounted() {
     this.startKeyListener();
@@ -184,24 +205,23 @@ export default {
 </style>
 
 <style lang="scss" scoped>
-iframe {
-  width: 75%;
-  height: 100%;
-  margin-left: 25%;
+section {
+  position: relative;
 }
 
-
 .iframe-container {
-  position: relative;
-  width: 100%;
-  height: 100%;
   // border: 8px solid rebeccapurple;
+  position: absolute;
+  width: 66%;
+  height: 100%;
+  margin-left: 25%;
+  margin-top: 10rem;
 
   iframe {
     position: absolute;
     top: 0;
     left: 0;
-    width: 66%;
+    width: 100%;
     height: 100%;
   }
 }
