@@ -38,7 +38,7 @@ limitations under the License.
           </span>
         </h1> -->
       </section>
-      <footer class="modal-card-foot" style="justify-content: flex-end">
+      <footer class="modal-card-foot" style="justify-content: flex-start">
         <b-field grouped group-multiline>
           <p class="control">
             <b-button size="is-medium" @click="close">

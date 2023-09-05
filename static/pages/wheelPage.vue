@@ -540,7 +540,7 @@ body {
   transition-timing-function: ease-in-out;
 
   &.wheel-aside-enter {
-    --bg-position-x: 80%;
+    --bg-position-x: 60%;
   }
 }
 
@@ -587,9 +587,16 @@ body {
 }
 
 #background-cody {
-  background-position: 150vw bottom;
+  background-position: 120vw bottom;
   background-size: 28%;
   transition-duration: 1.5s;
+  width: 25vw;
+  left: auto;
+  right: 0;
+  background-size: 100%;
+  bottom: 0;
+  top: auto;
+  z-index: 50;
 }
 
 .wheel-aside-enter {
@@ -602,7 +609,7 @@ body {
   }
 
   #background-cody {
-    background-position-x: 83vw;
+    background-position-x: 10vw;
   }
 }
 </style>
