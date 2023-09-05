@@ -1,3 +1,8 @@
+:root {
+  --bg-color: #0B7EC3;
+  --bg-image: url('../images/bg-panning.png');
+}
+
 body {
   width: 100vw;
   height: 100vh;
@@ -6,13 +11,13 @@ body {
 
 // from https://codepen.io/P1N2O/pen/pyBNzX
 body {
-  background: linear-gradient(-45deg, #10258a, #4DB2EA, #380b93);
-  background-size: 400% 400%;
-  animation: gradient 15s ease infinite;
-  height: 100vh;
+  // background: linear-gradient(-45deg, #10258a, #4DB2EA, #380b93);
+  // background-size: 400% 400%;
+  // animation: bg-gradient 15s ease infinite;
+  // height: 100vh;
 }
 
-@keyframes gradient {
+@keyframes bg-gradient {
   0% {
     background-position: 0% 50%;
   }
