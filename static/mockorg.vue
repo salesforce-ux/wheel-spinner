@@ -74,11 +74,23 @@ limitations under the License.
 <script>
 import * as Util from "./Util.js";
 import { mapGetters } from "vuex";
+import './images/blue-50.png';
+import './images/cloud-blue-60.png';
+import './images/green-70.png';
+import './images/hot-orange-60.png';
+import './images/indigo-40.png';
+import './images/orange-70.png';
+import './images/pink-50.png';
+import './images/purple-40.png';
+import './images/red-50.png';
+import './images/teal-70.png';
+import './images/violet-30.png';
+import './images/yellow-80.png';
+
 
 export default {
   data() {
     return {
-      MOCK_ORG_URL: "https://df23-styling-hooks-518c2f9ded87.herokuapp.com/",
       winnerDialogVisible: false,
       winnerText: "",
       winnerImage: "",
@@ -125,6 +137,7 @@ export default {
     closeModal(howClosed) {
       console.log("modal closed:", howClosed);
       this.winnerDialogVisible = false;
+      this.introResult = false;
       this.$emit("dialog-closed", this.winnerEntry);
     },
     startKeyListener() {
@@ -139,12 +152,12 @@ export default {
       this.winnerText = winnerEntry.text;
       this.winnerImage = winnerEntry.image;
       this.winnerDialogVisible = true;
-      this.iframeBaseUrl = this.getIframeUrl("cccccc");
-      this.iframeOverlayUrl = this.getIframeUrl(winnerEntry.color.substring(1));
+      this.iframeBaseUrl = this.getIframeUrl(winnerEntry.colorName, winnerEntry.colorTint);
+      this.iframeOverlayUrl = this.getIframeUrl(winnerEntry.colorName, winnerEntry.colorTint);
       this.setFocusOnRemoveButton();
     },
-    getIframeUrl(color) {
-      return `${this.MOCK_ORG_URL}?display-mode&color=${color}`;
+    getIframeUrl(colorName, colorTint) {
+      return `/images/${colorName.replace(" ", "-").toLowerCase()}-${colorTint}.png`;
     },
     setFocusOnRemoveButton() {
       this.$nextTick(() => {
@@ -188,7 +201,7 @@ export default {
             clearInterval(intervalCheck);
             this.introResult = true;
           }
-        }, 1000);
+        }, 1200);
       }, 4000);
     }
   },
@@ -232,7 +245,7 @@ section {
     transform: translateY(50vw);
   }
   iframe {
-    transition: opacity 1s ease-in-out;
+    transition: opacity 1.2s ease-in-out;
     opacity: 0;
   }
 }
@@ -242,12 +255,17 @@ section {
   }
 
   #iframe-base {
-    transition-delay: 0.5s;
+    transition-delay: 0.6s;
     opacity: 1;
+    -webkit-filter: grayscale(100%);
+    -moz-filter: grayscale(100%);
+    -ms-filter: grayscale(100%);
+    -o-filter: grayscale(100%);
+    filter: grayscale(100%);
   }
 
   #iframe-overlay {
-    transition-delay: 3s;
+    transition-delay: 2.4s;
     opacity: 1;
   }
 }

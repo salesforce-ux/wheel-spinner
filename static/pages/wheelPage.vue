@@ -536,7 +536,7 @@ body {
   background-position: var(--bg-position-x, 0) var(--bg-position-y, 0);
   background-size: cover;
   transition-property: background-position-x, transform;
-  transition-duration: 2s;
+  transition-duration: 1.2s;
   transition-timing-function: ease-in-out;
 
   &.wheel-aside-enter {
