@@ -21,14 +21,14 @@ limitations under the License.
         'wheel-aside-enter': wheelAside,
       }"
     >
-      <div id="background-astro" class="background-element" :style="bgAstroLeft"></div>
+      <div id="background-einstein" class="background-element" :style="bgAstroLeft"></div>
       <div
         id="background-clouds"
         class="background-element"
         :style="bgCloudsMiddle"
       ></div>
       <div id="background-cody" class="background-element" :style="bgCodyRight"></div>
-      <!-- <img src="/images/astro-left.png"/> -->
+      <!-- <img src="/images/einstein-left.png"/> -->
     </div>
 
     <div
@@ -195,9 +195,9 @@ import * as Locales from "../Locales.js";
 import * as i18nSetup from "../i18n-setup.js";
 import { mapGetters } from "vuex";
 
-import "../images/astro-left.png";
+import "../images/einstein-left.png";
 import "../images/clouds-middle.png";
-import "../images/cody-right.png";
+import "../images/codey-right.png";
 
 export default {
   components: {
@@ -243,11 +243,11 @@ export default {
     return {
       wheelAside: false,
       waitAnimation: {},
-      // imgAstroLeft: require('../images/astro-left.png'),
-      bgAstroLeft: "background-image: url('/images/astro-left.png')",
+      // imgAstroLeft: require('../images/einstein-left.png'),
+      bgAstroLeft: "background-image: url('/images/einstein-left.png')",
       bgCloudsMiddle: "background-image: url('/images/clouds-middle.png')",
-      bgCodyRight: "background-image: url('/images/cody-right.png')",
-      // bgAstroLeftRequire: `background-image: url('${require('../images/astro-left.png')}')`,
+      bgCodyRight: "background-image: url('/images/codey-right.png')",
+      // bgAstroLeftRequire: `background-image: url('${require('../images/einstein-left.png')}')`,
     };
   },
   computed: {
@@ -575,8 +575,8 @@ body {
   transition-timing-function: ease-in-out;
 }
 
-#background-astro {
-  background-position: -5vw bottom;
+#background-einstein {
+  background-position: -5% bottom;
   background-size: 30%;
   transition-duration: 1s;
 }
@@ -589,7 +589,6 @@ body {
 
 #background-cody {
   background-position: 120vw bottom;
-  background-size: 28%;
   transition-duration: 1.5s;
   width: 25vw;
   left: auto;
@@ -601,8 +600,8 @@ body {
 }
 
 .wheel-aside-enter {
-  #background-astro {
-    background-position-x: -50vw;
+  #background-einstein {
+    background-position-x: -75%;
   }
 
   #background-clouds {
@@ -610,7 +609,7 @@ body {
   }
 
   #background-cody {
-    background-position-x: 10vw;
+    background-position-x: 0vw;
   }
 }
 </style>
