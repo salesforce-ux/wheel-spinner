@@ -37,12 +37,11 @@ export default {
 .wrapper {
   position: absolute;
   top: 3rem;
-  left: 50%;
-  margin-left: -25vw;
+  margin-left: 50vw;
+  transform: translateX(-50%);
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 50vw;
 }
 h1 {
   font-family: ITC Avant Garde, sans-serif;
@@ -56,6 +55,6 @@ h1 {
   vertical-align: middle;
   padding-inline: 8rem;
   line-height: 1.66;
-  text-wrap: nowrap;
+  white-space: nowrap;
 }
 </style>

@@ -540,7 +540,7 @@ body {
   transition-timing-function: ease-in-out;
 
   &.wheel-aside-enter {
-    --bg-position-x: 60%;
+    --bg-position-x: 50%;
   }
 }
 
@@ -556,6 +556,7 @@ body {
   right: 1rem;
   bottom: 1rem;
   opacity: 0.25;
+  z-index: 100;
 
   &:hover {
     opacity: 1;
