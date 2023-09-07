@@ -165,6 +165,7 @@ limitations under the License.
     ></titleAndDescriptionDialog>
 
     <winneranimation ref="winneranimation"> </winneranimation>
+    <confetti ref="confetti"></confetti>
   </div>
 </template>
 
@@ -182,6 +183,7 @@ import sheetdialog from "../sheetdialog.vue";
 import accountdialog from "../accountdialog.vue";
 import winnerdialog from "../winnerdialog.vue";
 import mockorg from "../mockorg.vue";
+import confetti from "../confetti.vue";
 import titleAndDescriptionDialog from "../titleAndDescriptionDialog.vue";
 import titleAndDescription from "../titleAndDescription.vue";
 import gamesign from "../gamesign.vue";
@@ -219,6 +221,7 @@ export default {
     muteToggle,
     titleAndDescriptionDialog,
     gamesign,
+    confetti,
   },
   async mounted() {
     this.$store.state.wheel.$t = this.translateMe;
@@ -409,9 +412,10 @@ export default {
       if (this.wheelConfig.animateWinner) {
         this.$refs.winneranimation.show(winningEntry);
       }
-      if (this.wheelConfig.launchConfetti) {
-        ConfettiLauncher.launch(this.wheelConfig.getCoalescedColors());
-      }
+      // if (this.wheelConfig.launchConfetti) {
+      //   ConfettiLauncher.launch(this.wheelConfig.getCoalescedColors());
+      // }
+      this.$refs.confetti.start();
       if (this.wheelConfig.displayWinnerDialog) {
         this.$refs.mockorg.show(winningEntry);
         // this.$refs.winnerdialog.show(winningEntry);
