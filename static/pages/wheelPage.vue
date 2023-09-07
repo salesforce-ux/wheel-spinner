@@ -27,7 +27,7 @@ limitations under the License.
         class="background-element"
         :style="bgCloudsMiddle"
       ></div>
-      <div id="background-cody" class="background-element" :style="bgCodyRight"></div>
+      <div id="background-codey" class="background-element" :style="bgCodyRight"></div>
       <!-- <img src="/images/einstein-left.png"/> -->
     </div>
 
@@ -591,7 +591,7 @@ body {
   transition-duration: 1s;
 }
 
-#background-cody {
+#background-codey {
   background-position: 120vw bottom;
   transition-duration: 1.5s;
   width: 25vw;
@@ -612,7 +612,7 @@ body {
     background-position-x: 10vw;
   }
 
-  #background-cody {
+  #background-codey {
     background-position-x: 0vw;
   }
 }
