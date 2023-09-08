@@ -18,7 +18,7 @@ import * as Util from './Util.js';
 export default class WheelConfig {
 
   constructor(winnerMessage) {
-    this.title = '';
+    this.title = 'Design with Styling Hooks';
     this.description = '';
     this.entries = [
       {
