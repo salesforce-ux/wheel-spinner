@@ -228,15 +228,15 @@ export default class WheelPainter {
     }
     context.beginPath();
     context.moveTo(this.wheelRadius - 15, 0);
-    context.lineTo(this.wheelRadius + 25, -20);
-    context.lineTo(this.wheelRadius + 25, 20);
+    context.lineTo(this.wheelRadius + 35, -25);
+    context.lineTo(this.wheelRadius + 35, 25);
     context.lineTo(this.wheelRadius - 15, 0);
     if (this.wheelConfig.drawOutlines) {
       context.lineWidth = 2;
-      context.strokeStyle = '#333333';
+      context.strokeStyle = '#000';
       context.stroke();
     }
-    context.fillStyle = '#BBB';
+    context.fillStyle = '#000';
     context.fill();
     context.restore();
   }
