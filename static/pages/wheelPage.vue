@@ -59,7 +59,6 @@ limitations under the License.
           v-on:wheel-stopped="wheelStopped"
         ></spinningwheel>
       </section>
-      <gamesign></gamesign>
       <button class="slds-button slds-button--neutral button-reset slds-hide" @click="resetWheel">
         Reset Wheel
       </button>
@@ -186,7 +185,6 @@ import mockorg from "../mockorg.vue";
 import confetti from "../confetti.vue";
 import titleAndDescriptionDialog from "../titleAndDescriptionDialog.vue";
 import titleAndDescription from "../titleAndDescription.vue";
-import gamesign from "../gamesign.vue";
 import muteToggle from "../muteToggle.vue";
 import winneranimation from "../winneranimation.vue";
 import * as ConfettiLauncher from "../ConfettiLauncher.js";
@@ -220,7 +218,6 @@ export default {
     titleAndDescription,
     muteToggle,
     titleAndDescriptionDialog,
-    gamesign,
     confetti,
   },
   async mounted() {
