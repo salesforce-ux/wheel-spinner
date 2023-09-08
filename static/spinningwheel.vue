@@ -14,10 +14,14 @@ See the License for the specific language governing permissions and
 limitations under the License.
 -->
 <template>
-  <div class="wrapper" ref="wrapper" :style="cssVars" :class="{
-    'wheel-aside-enter': wheelAside,
-  }
-">
+  <div
+    class="wrapper"
+    ref="wrapper"
+    :style="cssVars"
+    :class="{
+      'wheel-aside-enter': wheelAside,
+    }"
+  >
     <div class="spinningwheel-container container">
       <canvas
         id="wheelCanvas"
@@ -109,7 +113,7 @@ export default {
         const self = this;
         document.addEventListener("keyup", (event) => {
           console.log("keyup", event);
-          if (event.key == "Enter" && event.ctrlKey || event.code == "Space") {
+          if ((event.key == "Enter" && event.ctrlKey) || event.code == "Space") {
             self.spin();
           }
         });
@@ -139,6 +143,7 @@ export default {
     readyMarkSet() {
       this.wheelReady = true;
       this.wheelAside = false;
+      this.myWheel.resetToInit();
     },
     trackInGoogleAnalytics() {
       const label = this.version;
@@ -183,7 +188,9 @@ export default {
   margin: auto;
 }
 
-.wrapper, .wheel-aside-leave-active, .wheel-aside-enter-active {
+.wrapper,
+.wheel-aside-leave-active,
+.wheel-aside-enter-active {
   transition: transform 0.8s ease-in;
 }
 

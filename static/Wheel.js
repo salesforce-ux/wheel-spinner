@@ -103,6 +103,10 @@ export default class Wheel {
     this.angle = 0;
   }
 
+  resetToInit() {
+    this.state = new InitialDemoSpinState(this);
+  }
+
   getStateTimeLengths() {
     const retVal = { accelerating: 0, decelerating: 0 };
     const spinTicks = this.wheelConfig.spinTime * 60;
