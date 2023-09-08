@@ -212,7 +212,7 @@ export default {
             this.introResult = true;
           }
         }, 1200);
-      }, 4000);
+      }, 3200);
     }
   },
   mounted() {
@@ -221,15 +221,31 @@ export default {
 };
 </script>
 
-<style>
+<style lang="scss">
 .modal button.modal-close {
   visibility: hidden;
+}
+.modal footer .field {
+  &,
+  .control,
+  .control button  {
+    width: 100%;
+  }
+}
+
+.modal footer button {
+  padding-block: 40px;
+  opacity: 0;
+  &:hover {
+    opacity: 0.5;
+  }
 }
 </style>
 
 <style lang="scss" scoped>
 section {
   position: relative;
+  overflow-y: hidden;
 }
 
 .result-screen-container {

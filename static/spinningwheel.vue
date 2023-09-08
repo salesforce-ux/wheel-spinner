@@ -47,7 +47,7 @@ export default {
       myTicker: new Ticker(),
       displayOverlayText: false,
       animationFrameID: undefined,
-      wheelSize: 988,
+      wheelSize: 1040,
       wheelAside: false,
       wheelReady: true,
     };
@@ -175,18 +175,20 @@ export default {
   /* border: 1px solid #afa; */
   position: relative;
 }
+
 .container {
   /* border: 1px solid #faa; */
   position: relative;
   height: 100%;
   margin: auto;
-
 }
-  .wrapper, .wheel-aside-leave-active, .wheel-aside-enter-active {
-    transition: transform 0.8s ease-in;
-  }
-  .wheel-aside-enter {
-    transform: translateX(-50vw);
-  }
 
+.wrapper, .wheel-aside-leave-active, .wheel-aside-enter-active {
+  transition: transform 0.8s ease-in;
+}
+
+.wheel-aside-enter {
+  transform: translateX(-50vw) scale(1.15);
+  transition-delay: 0.2s;
+}
 </style>

@@ -60,7 +60,7 @@ limitations under the License.
         ></spinningwheel>
       </section>
       <gamesign></gamesign>
-      <button class="slds-button slds-button--neutral button-reset" @click="resetWheel">
+      <button class="slds-button slds-button--neutral button-reset slds-hide" @click="resetWheel">
         Reset Wheel
       </button>
     </div>
@@ -607,6 +607,7 @@ body {
 }
 
 .wheel-aside-enter {
+
   #background-einstein {
     background-position-x: -75%;
   }
