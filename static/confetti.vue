@@ -21,7 +21,7 @@ limitations under the License.
       <path id="path" d="M487.966 0C121.216 410.34-5.124 465 1.226 569.39c4.34 71.33 116.56 131.22 157.03 149.55 188.15 85.21 321.52 27.17 228.7-19.11-44.98-22.43-94.07-12.16-122.33 13.39-32.36 29.26-39.58 77.96-19.29 109.89 58.82 92.57 315.27 39.56 325.47 111.86 17.1 121.26-422.53 124.92-450.7 271.86-16.19 84.45 46.52 268.87 46.52 272.21"/>
     </svg>
 
-    <div id="confettiContainer">
+    <div id="confettiContainer" ref="confettiContainer">
       <div class="confetti"></div>
       <div class="confetti"></div>
       <div class="confetti"></div>
@@ -75,6 +75,59 @@ limitations under the License.
       <div class="confetti"></div>
       <div class="confetti"></div>
       <div class="confetti"></div>
+      <div class="confetti"></div>
+        <div class="confetti"></div>
+        <div class="confetti"></div>
+        <div class="confetti"></div>
+        <div class="confetti"></div>
+        <div class="confetti"></div>
+        <div class="confetti"></div>
+        <div class="confetti"></div>
+        <div class="confetti"></div>
+        <div class="confetti"></div>
+        <div class="confetti"></div>
+        <div class="confetti"></div>
+        <div class="confetti"></div>
+        <div class="confetti"></div>
+        <div class="confetti"></div>
+        <div class="confetti"></div>
+        <div class="confetti"></div>
+        <div class="confetti"></div>
+        <div class="confetti"></div>
+        <div class="confetti"></div>
+        <div class="confetti"></div>
+        <div class="confetti"></div>
+        <div class="confetti"></div>
+        <div class="confetti"></div>
+        <div class="confetti"></div>
+        <div class="confetti"></div>
+        <div class="confetti"></div>
+        <div class="confetti"></div>
+        <div class="confetti"></div>
+        <div class="confetti"></div>
+        <div class="confetti"></div>
+        <div class="confetti"></div>
+        <div class="confetti"></div>
+        <div class="confetti"></div>
+        <div class="confetti"></div>
+        <div class="confetti"></div>
+        <div class="confetti"></div>
+        <div class="confetti"></div>
+        <div class="confetti"></div>
+        <div class="confetti"></div>
+        <div class="confetti"></div>
+        <div class="confetti"></div>
+        <div class="confetti"></div>
+        <div class="confetti"></div>
+        <div class="confetti"></div>
+        <div class="confetti"></div>
+        <div class="confetti"></div>
+        <div class="confetti"></div>
+        <div class="confetti"></div>
+        <div class="confetti"></div>
+        <div class="confetti"></div>
+        <div class="confetti"></div>
+        <div class="confetti"></div>
 
 
       <div class="heartWrap2">
@@ -106,9 +159,10 @@ export default {
       confetti: new ConfettiComponent(),
     };
   },
-  // mounted() {
-  //   this.confetti.start();
-  // },
+  mounted() {
+    console.log('confetti mounted', this.$refs);
+    this.start();
+  },
   methods: {
     start() {
       this.confetti.start();

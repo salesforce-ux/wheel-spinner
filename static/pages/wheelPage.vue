@@ -165,7 +165,7 @@ limitations under the License.
     ></titleAndDescriptionDialog>
 
     <winneranimation ref="winneranimation"> </winneranimation>
-    <confetti ref="confetti"></confetti>
+    <confetti ref="confetti" v-if="showMeConfetti"></confetti>
   </div>
 </template>
 
@@ -244,6 +244,7 @@ export default {
   },
   data() {
     return {
+      showMeConfetti: false,
       wheelAside: false,
       waitAnimation: {},
       // imgAstroLeft: require('../images/einstein-left.png'),
@@ -407,6 +408,7 @@ export default {
     },
     wheelStopped(winningEntry) {
       this.wheelAside = true;
+      this.showMeConfetti = true;
       Audio.fadeMusic();
       this.$store.commit("addWinner", winningEntry);
       if (this.wheelConfig.animateWinner) {
@@ -415,7 +417,7 @@ export default {
       // if (this.wheelConfig.launchConfetti) {
       //   ConfettiLauncher.launch(this.wheelConfig.getCoalescedColors());
       // }
-      this.$refs.confetti.start();
+      // this.$refs.confetti.start();
       if (this.wheelConfig.displayWinnerDialog) {
         this.$refs.mockorg.show(winningEntry);
         // this.$refs.winnerdialog.show(winningEntry);
@@ -492,6 +494,7 @@ export default {
     readyTheWheel() {
       console.log("ready the wheel");
       this.wheelAside = false;
+      this.showMeConfetti = false;
       this.$refs.spinningwheel.readyMarkSet();
     },
     resetWheelRotation() {
@@ -609,7 +612,7 @@ body {
   }
 
   #background-clouds {
-    background-position-x: 10vw;
+    background-position-x: -10vw;
   }
 
   #background-codey {
