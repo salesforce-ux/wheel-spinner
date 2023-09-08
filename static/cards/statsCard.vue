@@ -38,7 +38,7 @@ limitations under the License.
 
   import yearCounter from './yearCounter.vue';
   import '../images/favicon-32x32.png';
-  import * as ServerFunctions from '../ServerFunctions.js';
+  // import * as ServerFunctions from '../ServerFunctions.js';
 
   export default {
     components: { yearCounter },
@@ -49,9 +49,9 @@ limitations under the License.
       }
     },
     async mounted() {
-      const spinStats = await ServerFunctions.getSpinStats();
-      if (spinStats.spinsPerSecond) this.spinsPerSecond = spinStats.spinsPerSecond;
-      if (spinStats.hoursSpunPerSecond) this.hoursSpunPerSecond = spinStats.hoursSpunPerSecond;
+      // const spinStats = await ServerFunctions.getSpinStats();
+      // if (spinStats.spinsPerSecond) this.spinsPerSecond = spinStats.spinsPerSecond;
+      // if (spinStats.hoursSpunPerSecond) this.hoursSpunPerSecond = spinStats.hoursSpunPerSecond;
     }
   }
 
