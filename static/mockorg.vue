@@ -21,7 +21,7 @@ limitations under the License.
       <section class="modal-card-body can-go-dark">
 
 
-        <!-- <img src="/images/org-mock-82-100-100.jpg" style="vertical-align: middle" /> -->
+        <!-- <img src="/images/result-screens/org-mock-82-100-100.jpg" style="vertical-align: middle" /> -->
         <div class="iframe-container">
           <iframe id="iframe-base" :src="iframeBaseUrl" @load="onIframeLoaded"></iframe>
           <iframe id="iframe-overlay" :src="iframeOverlayUrl" @load="onIframeLoaded"></iframe>
@@ -74,18 +74,18 @@ limitations under the License.
 <script>
 import * as Util from "./Util.js";
 import { mapGetters } from "vuex";
-import './images/blue-50.png';
-import './images/cloud-blue-60.png';
-import './images/green-70.png';
-import './images/hot-orange-60.png';
-import './images/indigo-40.png';
-import './images/orange-70.png';
-import './images/pink-50.png';
-import './images/purple-40.png';
-import './images/red-50.png';
-import './images/teal-70.png';
-import './images/violet-30.png';
-import './images/yellow-80.png';
+import './images/result-screens/blue-50.png';
+import './images/result-screens/cloud-blue-60.png';
+import './images/result-screens/green-70.png';
+import './images/result-screens/hot-orange-60.png';
+import './images/result-screens/indigo-40.png';
+import './images/result-screens/orange-70.png';
+import './images/result-screens/pink-50.png';
+import './images/result-screens/purple-40.png';
+import './images/result-screens/red-50.png';
+import './images/result-screens/teal-70.png';
+import './images/result-screens/violet-30.png';
+import './images/result-screens/yellow-80.png';
 
 
 export default {
@@ -157,7 +157,7 @@ export default {
       this.setFocusOnRemoveButton();
     },
     getIframeUrl(colorName, colorTint) {
-      return `/images/${colorName.replace(" ", "-").toLowerCase()}-${colorTint}.png`;
+      return `/images/result-screens/${colorName.replace(" ", "-").toLowerCase()}-${colorTint}.png`;
     },
     setFocusOnRemoveButton() {
       this.$nextTick(() => {
