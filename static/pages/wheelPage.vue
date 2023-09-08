@@ -600,7 +600,7 @@ body {
   width: 25vw;
   left: auto;
   right: 0;
-  background-size: 100%;
+  background-size: 112%;
   bottom: 0;
   top: auto;
   z-index: 50;
@@ -617,7 +617,7 @@ body {
   }
 
   #background-codey {
-    background-position-x: 0vw;
+    background-position-x: -2vw;
   }
 }
 </style>
