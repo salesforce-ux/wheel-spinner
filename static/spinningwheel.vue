@@ -51,7 +51,7 @@ export default {
       myTicker: new Ticker(),
       displayOverlayText: false,
       animationFrameID: undefined,
-      wheelSize: 1040,
+      wheelSize: 1222,
       wheelAside: false,
       wheelReady: true,
     };
@@ -195,7 +195,7 @@ export default {
 }
 
 .wheel-aside-enter {
-  transform: translateX(-50vw) scale(1.15);
+  transform: translateX(-50vw) scale(.75);
   transition-delay: 0.2s;
 }
 </style>

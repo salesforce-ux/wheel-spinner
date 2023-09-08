@@ -250,11 +250,11 @@ section {
 
 .result-screen-container {
   // border: 8px solid rebeccapurple;
-  position: absolute;
+  position: relative;
   width: 60%;
   height: 100%;
-  margin-left: 25%;
-  margin-top: 10rem;
+  margin-inline: auto;
+  margin-top: 4%;
 
   img {
     position: absolute;
