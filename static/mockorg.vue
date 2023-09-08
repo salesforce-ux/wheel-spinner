@@ -22,9 +22,13 @@ limitations under the License.
 
 
         <!-- <img src="/images/result-screens/org-mock-82-100-100.jpg" style="vertical-align: middle" /> -->
-        <div class="iframe-container">
-          <iframe id="iframe-base" :src="iframeBaseUrl" @load="onIframeLoaded"></iframe>
-          <iframe id="iframe-overlay" :src="iframeOverlayUrl" @load="onIframeLoaded"></iframe>
+        <div class="result-screen-container">
+          <!--
+            <iframe id="result-screen-base" :src="iframeBaseUrl" @load="onIframeLoaded"></iframe>
+            <iframe id="result-screen-overlay" :src="iframeOverlayUrl" @load="onIframeLoaded"></iframe>
+          -->
+          <img id="result-screen-base" :src="iframeBaseUrl" @load="onImgLoaded"/>
+          <img id="result-screen-overlay" :src="iframeOverlayUrl" @load="onImgLoaded"/>
         </div>
         <!-- <h1 class="title">
           <img v-if="winnerImage" :src="winnerImage" style="height:200px;vertical-align:middle">
@@ -152,12 +156,12 @@ export default {
       this.winnerText = winnerEntry.text;
       this.winnerImage = winnerEntry.image;
       this.winnerDialogVisible = true;
-      this.iframeBaseUrl = this.getIframeUrl(winnerEntry.colorName, winnerEntry.colorTint);
-      this.iframeOverlayUrl = this.getIframeUrl(winnerEntry.colorName, winnerEntry.colorTint);
+      this.iframeBaseUrl = this.getImgUrl(winnerEntry.colorName, winnerEntry.colorTint);
+      this.iframeOverlayUrl = this.getImgUrl(winnerEntry.colorName, winnerEntry.colorTint);
       this.setFocusOnRemoveButton();
     },
-    getIframeUrl(colorName, colorTint) {
-      return `/images/result-screens/${colorName.replace(" ", "-").toLowerCase()}-${colorTint}.png`;
+    getImgUrl(colorName, colorTint) {
+      return `/images/${colorName.replace(" ", "-").toLowerCase()}-${colorTint}.png`;
     },
     setFocusOnRemoveButton() {
       this.$nextTick(() => {
@@ -187,8 +191,14 @@ export default {
       console.log('The iframe DOMContentLoaded event has been emitted!', e.target);
       // this.introResult = true;
       console.log("e.target.id", e.target.id);
-      if(e.target.id === "iframe-base") this.iframeBaseLoaded = true;
-      if(e.target.id === "iframe-overlay") this.iframeOverlayLoaded = true;
+      if(e.target.id === "result-screen-base") this.iframeBaseLoaded = true;
+      if(e.target.id === "result-screen-overlay") this.iframeOverlayLoaded = true;
+    },
+    onImgLoaded(e) {
+      // This method is called when the image DOMContentLoaded event is emitted
+      console.log(`The image ${e.type} event has been emitted!`, e.target);
+      if(e.target.id === "result-screen-base") this.iframeBaseLoaded = true;
+      if(e.target.id === "result-screen-overlay") this.iframeOverlayLoaded = true;
     },
     handleResultDisplay() {
       let intervalCheck;
@@ -222,39 +232,39 @@ section {
   position: relative;
 }
 
-.iframe-container {
+.result-screen-container {
   // border: 8px solid rebeccapurple;
   position: absolute;
-  width: 66%;
+  width: 60%;
   height: 100%;
   margin-left: 25%;
   margin-top: 10rem;
 
-  iframe {
+  img {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
-    height: 100%;
+    height: auto;
   }
 }
 
 .modal.is-active, .result-leave-active, .result-enter-active {
-  .iframe-container {
+  .result-screen-container {
     transition: transform 0.8s ease-in-out;
     transform: translateY(50vw);
   }
-  iframe {
+  img {
     transition: opacity 1.2s ease-in-out;
     opacity: 0;
   }
 }
 .modal.is-active.result-enter {
-  .iframe-container {
+  .result-screen-container {
     transform: translateY(0vw);
   }
 
-  #iframe-base {
+  #result-screen-base {
     transition-delay: 0.6s;
     opacity: 1;
     -webkit-filter: grayscale(100%);
@@ -264,7 +274,7 @@ section {
     filter: grayscale(100%);
   }
 
-  #iframe-overlay {
+  #result-screen-overlay {
     transition-delay: 2.4s;
     opacity: 1;
   }
