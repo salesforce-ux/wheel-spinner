@@ -165,6 +165,7 @@ limitations under the License.
 
     <winneranimation ref="winneranimation"> </winneranimation>
     <confetti ref="confetti" v-if="showMeConfetti"></confetti>
+    <infoQrcode ref="infoQrcode"></infoQrcode>
   </div>
 </template>
 
@@ -183,6 +184,7 @@ import accountdialog from "../accountdialog.vue";
 import winnerdialog from "../winnerdialog.vue";
 import mockorg from "../mockorg.vue";
 import confetti from "../confetti.vue";
+import infoQrcode from "../info-qrcode.vue";
 import titleAndDescriptionDialog from "../titleAndDescriptionDialog.vue";
 import titleAndDescription from "../titleAndDescription.vue";
 import muteToggle from "../muteToggle.vue";
@@ -219,6 +221,7 @@ export default {
     muteToggle,
     titleAndDescriptionDialog,
     confetti,
+    infoQrcode,
   },
   async mounted() {
     this.$store.state.wheel.$t = this.translateMe;
