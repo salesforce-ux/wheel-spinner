@@ -14,8 +14,8 @@ See the License for the specific language governing permissions and
 limitations under the License.
 -->
 <template>
-  <div class="wrapper slds-hide">
-    <button class="slds-button slds-button_icon" title="More Options">
+  <div class="wrapper">
+    <button class="slds-button slds-button_icon" title="More Options" @click="handleIconClick">
       <span class="slds-icon_container slds-icon_container_circle slds-icon-action-info" title="Description of icon when needed">
         <!-- <svg class="slds-icon" aria-hidden="true">
           <use xlink:href="/assets/icons/action-sprite/svg/symbols.svg#info"></use>
@@ -36,6 +36,12 @@ export default {
     };
   },
   computed: {},
+  methods: {
+    handleIconClick(event) {
+      const popover = document.querySelector('.slds-popover');
+      popover.classList.toggle('slds-hide');
+    }
+  },
   watch: {},
 };
 </script>
@@ -43,12 +49,13 @@ export default {
 <style scoped>
 .wrapper {
   position: absolute;
-  top: 3rem;
+  bottom: 3rem;
   margin-left: 50vw;
   transform: translateX(-50%);
   display: flex;
   justify-content: center;
   align-items: center;
+  z-index: 200;
 }
 h1 {
   font-family: ITC Avant Garde, sans-serif;
