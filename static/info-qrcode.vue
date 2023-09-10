@@ -14,8 +14,8 @@ See the License for the specific language governing permissions and
 limitations under the License.
 -->
 <template>
-  <div class="wrapper">
-    <button class="slds-button slds-button_icon" title="More Options" @click="handleIconClick">
+  <div class="wrapper" ref="wrapper">
+    <button class="slds-button slds-button_icon" title="More Options" @click="handleIconClick" ref="button">
       <span class="slds-icon_container slds-icon_container_circle slds-icon-action-info" title="Description of icon when needed">
         <!-- <svg class="slds-icon" aria-hidden="true">
           <use xlink:href="/assets/icons/action-sprite/svg/symbols.svg#info"></use>
@@ -24,6 +24,11 @@ limitations under the License.
         <span class="slds-assistive-text">Description of icon when needed</span>
       </span>
     </button>
+    <section aria-label="Dialog title" aria-describedby="popover-qr-code" class="slds-popover slds-nubbin_bottom" role="dialog" ref="popover">
+      <div id="popover-qr-code" class="slds-popover__body">
+        <img src="/images/qrcode.jpg" />
+      </div>
+    </section>
   </div>
 </template>
 
@@ -38,15 +43,15 @@ export default {
   computed: {},
   methods: {
     handleIconClick(event) {
-      const popover = document.querySelector('.slds-popover');
-      popover.classList.toggle('slds-hide');
+      const wrapper = this.$refs.wrapper
+      wrapper.classList.toggle('open');
     }
   },
   watch: {},
 };
 </script>
 
-<style scoped>
+<style scoped lang="scss">
 .wrapper {
   position: absolute;
   bottom: 3rem;
@@ -57,18 +62,30 @@ export default {
   align-items: center;
   z-index: 200;
 }
-h1 {
-  font-family: ITC Avant Garde, sans-serif;
-  font-weight: 800;
-  color: #fff;
-  background: no-repeat center center;
-  background-color: #371493;
-  background-size: contain;
-  border-radius: 10rem;
-  font-size: 4rem;
-  vertical-align: middle;
-  padding-inline: 8rem;
-  line-height: 1.66;
-  white-space: nowrap;
+
+button.slds-button {
+  opacity: 0.33;
+
+  .open & {
+    opacity: 1;
+  }
+}
+
+.slds-popover {
+  display: none;
+  .open & {
+    display: block;
+  }
+}
+
+section.slds-popover {
+  position: absolute;
+  height: auto;
+  bottom: 6rem;
+  /* transform: translateX(-50%); */
+
+  img {
+    display: block;
+  }
 }
 </style>
