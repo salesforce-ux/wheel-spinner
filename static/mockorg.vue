@@ -236,9 +236,6 @@ export default {
 .modal footer button {
   padding-block: 40px;
   opacity: 0;
-  &:hover {
-    opacity: 0.5;
-  }
 }
 </style>
 

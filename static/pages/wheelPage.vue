@@ -59,7 +59,7 @@ limitations under the License.
           v-on:wheel-stopped="wheelStopped"
         ></spinningwheel>
       </section>
-      <button class="slds-button slds-button--neutral button-reset slds-hide" @click="resetWheel">
+      <button class="slds-button slds-button--neutral button-reset" @click="resetWheel">
         Reset Wheel
       </button>
     </div>
@@ -535,7 +535,7 @@ export default {
 };
 </script>
 
-<style>
+<style lang="scss">
 body {
   background-color: var(--bg-color, #fff);
   background-image: var(--bg-image);
@@ -560,9 +560,9 @@ body {
 
 .button-reset {
   position: absolute;
-  right: 1rem;
-  bottom: 1rem;
-  opacity: 0.25;
+  left: 1rem;
+  top: 1rem;
+  opacity: 0;
   z-index: 100;
 
   &:hover {

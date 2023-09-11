@@ -15,16 +15,32 @@ limitations under the License.
 -->
 <template>
   <div class="wrapper" ref="wrapper">
-    <button class="slds-button slds-button_icon" title="More Options" @click="handleIconClick" ref="button">
-      <span class="slds-icon_container slds-icon_container_circle slds-icon-action-info" title="Description of icon when needed">
+    <button
+      class="slds-button slds-button_icon"
+      title="More Options"
+      @click="handleIconClick"
+      ref="button"
+    >
+      <span
+        class="slds-icon_container slds-icon_container_circle slds-icon-action-info"
+        title="Description of icon when needed"
+      >
         <!-- <svg class="slds-icon" aria-hidden="true">
           <use xlink:href="/assets/icons/action-sprite/svg/symbols.svg#info"></use>
         </svg> -->
-        <img src="https://cdn.jsdelivr.net/npm/@salesforce-ux/design-system@2.21.5/assets/icons/action/info.svg"/>
+        <img
+          src="https://cdn.jsdelivr.net/npm/@salesforce-ux/design-system@2.21.5/assets/icons/action/info.svg"
+        />
         <span class="slds-assistive-text">Description of icon when needed</span>
       </span>
     </button>
-    <section aria-label="Dialog title" aria-describedby="popover-qr-code" class="slds-popover slds-nubbin_bottom" role="dialog" ref="popover">
+    <section
+      aria-label="Dialog title"
+      aria-describedby="popover-qr-code"
+      class="slds-popover slds-nubbin_right-bottom"
+      role="dialog"
+      ref="popover"
+    >
       <div id="popover-qr-code" class="slds-popover__body">
         <img src="/images/qrcode.jpg" />
       </div>
@@ -33,19 +49,18 @@ limitations under the License.
 </template>
 
 <script>
+// import "./images/qrcode.jpg";
 
 export default {
   data() {
-    return {
-      bgImg: "background-image: url('/images/sign-dust.png')",
-    };
+    return {};
   },
   computed: {},
   methods: {
     handleIconClick(event) {
-      const wrapper = this.$refs.wrapper
-      wrapper.classList.toggle('open');
-    }
+      const wrapper = this.$refs.wrapper;
+      wrapper.classList.toggle("open");
+    },
   },
   watch: {},
 };
@@ -54,7 +69,8 @@ export default {
 <style scoped lang="scss">
 .wrapper {
   position: absolute;
-  bottom: 3rem;
+  right: 1rem;
+  bottom: 1.5rem;
   margin-left: 50vw;
   transform: translateX(-50%);
   display: flex;
@@ -81,7 +97,8 @@ button.slds-button {
 section.slds-popover {
   position: absolute;
   height: auto;
-  bottom: 6rem;
+  bottom: 0.625rem;
+  right: 6rem;
   /* transform: translateX(-50%); */
 
   img {
