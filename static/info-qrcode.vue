@@ -49,7 +49,7 @@ limitations under the License.
 </template>
 
 <script>
-// import "./images/qrcode.jpg";
+import "./images/qrcode.jpg";
 
 export default {
   data() {
