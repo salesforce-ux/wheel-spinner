@@ -448,7 +448,7 @@ export default {
           this.$i18n.locale
         );
       }
-      window.clicky.log('/', `Wheel spin: ${winningEntry.colorName}-${winningEntry.colorTint}`);
+      window.clicky.log(`#${winningEntry.colorName.replace(" ", "-").toLowerCase()}-${winningEntry.colorTint}`, `Wheel spin`);
     },
     showSnackbarMessage(msg) {
       this.$buefy.toast.open({ message: Util.escapeHtml(msg), duration: 6000 });
