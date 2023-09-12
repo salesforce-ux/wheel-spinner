@@ -407,8 +407,9 @@ export default {
       );
     },
     wheelStopped(winningEntry) {
+      console.log("wheelStopped", winningEntry);
       this.wheelAside = true;
-      this.showMeConfetti = true;
+      if(winningEntry.accessible) { this.showMeConfetti = true; }
       Audio.fadeMusic();
       this.$store.commit("addWinner", winningEntry);
       if (this.wheelConfig.animateWinner) {
@@ -439,12 +440,14 @@ export default {
           );
         }
       }
-      Audio.playAfterSpin(
-        winningEntry.sound || this.wheelConfig.afterSpinSound,
-        winningEntry.text,
-        this.wheelConfig.afterSpinSoundVolume,
-        this.$i18n.locale
-      );
+      if (winningEntry.accessible) {
+        Audio.playAfterSpin(
+          winningEntry.sound || this.wheelConfig.afterSpinSound,
+          winningEntry.text,
+          this.wheelConfig.afterSpinSoundVolume,
+          this.$i18n.locale
+        );
+      }
     },
     showSnackbarMessage(msg) {
       this.$buefy.toast.open({ message: Util.escapeHtml(msg), duration: 6000 });

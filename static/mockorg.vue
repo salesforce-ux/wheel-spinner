@@ -212,7 +212,7 @@ export default {
             this.introResult = true;
           }
         }, 1200);
-      }, 3200);
+      }, 2400);
     }
   },
   mounted() {
