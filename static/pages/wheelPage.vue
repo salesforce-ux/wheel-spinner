@@ -448,6 +448,7 @@ export default {
           this.$i18n.locale
         );
       }
+      window.clicky.log('/', `Wheel spin: ${winningEntry.colorName}-${winningEntry.colorTint}`);
     },
     showSnackbarMessage(msg) {
       this.$buefy.toast.open({ message: Util.escapeHtml(msg), duration: 6000 });
